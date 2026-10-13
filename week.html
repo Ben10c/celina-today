@@ -121,7 +121,8 @@ var OVERRIDE={
  "2026-10-26":{ctx:"Staff PD day · no school · flight home 12:50",read:"evening",extra:"Back to school tomorrow (Tue 27 Oct). Pack bag and library book tonight."},
  "2026-10-30":{ctx:"House Day · house kit all day · Y4 Swimming Gala P4–5 (full swim kit) · snack + CCAs as usual",normal:true}
 };
-function dayPlan(dt){
+function dayPlan(dt){var p=dayPlan0(dt);var n=Math.round(Date.UTC(dt.getFullYear(),dt.getMonth(),dt.getDate())/864e5);p.items=p.items.concat([[n%2?'ESB \u2014 Reading':'ESB \u2014 Poem',5,'']]);return p;}
+function dayPlan0(dt){
   var d=dt.getDay(), o=OVERRIDE[dkey(dt)], s=SCHED[d];
   if(!o) return {ctx:s.ctx,read:s.read,items:s.items,hol:false};
   if(o.normal) return {ctx:o.ctx,read:s.read,items:s.items,hol:false};
