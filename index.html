@@ -1,0 +1,168 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Celina Today</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --paper:#F6F8FB; --surface:#FFFFFF; --surface-2:#EDF1F7;
+  --ink:#14243F; --ink-2:#33455F; --meta:#5B6E8C;
+  --line:#D9E0EA; --line-soft:#E7ECF3;
+  --accent:#B3324A; --accent-soft:#FBEEF1; --accent-line:#E8C3CC;
+  --school:#1F5C8B; --school-soft:#E9F1F8; --school-line:#BFD7E8;
+  --today:#0F7A5A; --today-soft:#E7F4EF; --today-line:#B4DCCB;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#0E1622; --surface:#151F2E; --surface-2:#1B2637;
+  --ink:#E7ECF3; --ink-2:#C3CEDD; --meta:#8FA2BC;
+  --line:#27344A; --line-soft:#1F2A3C;
+  --accent:#EC8399; --accent-soft:#2A1A21; --accent-line:#4A2B35;
+  --school:#79B4DF; --school-soft:#12212D; --school-line:#2A4155;
+  --today:#5FCFA6; --today-soft:#0F2620; --today-line:#255043;
+}}
+:root[data-theme="dark"]{
+  --paper:#0E1622; --surface:#151F2E; --surface-2:#1B2637;
+  --ink:#E7ECF3; --ink-2:#C3CEDD; --meta:#8FA2BC;
+  --line:#27344A; --line-soft:#1F2A3C;
+  --accent:#EC8399; --accent-soft:#2A1A21; --accent-line:#4A2B35;
+  --school:#79B4DF; --school-soft:#12212D; --school-line:#2A4155;
+  --today:#5FCFA6; --today-soft:#0F2620; --today-line:#255043;
+}
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,sans-serif;font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:620px;margin:0 auto;padding:0 20px 70px}
+header{padding:34px 0 20px}
+.eyebrow{font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--meta);margin:0 0 8px}
+h1{font-family:Newsreader,Georgia,serif;font-weight:600;font-size:clamp(38px,10vw,58px);line-height:1;margin:0;letter-spacing:-.02em}
+.date{font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--meta);margin:10px 0 0}
+.ctx{margin:16px 0 0;padding:13px 16px;background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:0 10px 10px 0;font-size:14.5px;color:var(--ink-2);line-height:1.5}
+.bar{display:flex;align-items:center;gap:14px;margin:22px 0 4px}
+.track{flex:1;height:8px;background:var(--surface-2);border-radius:99px;overflow:hidden;border:1px solid var(--line)}
+.fill{height:100%;width:0;background:var(--today);transition:width .28s ease}
+.pct{font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--meta);font-variant-numeric:tabular-nums;white-space:nowrap}
+section{margin:26px 0 0}
+.bl{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--meta);margin:0 0 9px}
+.list{display:flex;flex-direction:column;gap:8px}
+label.it{display:flex;align-items:center;gap:14px;background:var(--surface);border:1px solid var(--line);border-radius:11px;padding:15px 16px;cursor:pointer}
+label.it:focus-within{outline:2px solid var(--accent);outline-offset:2px}
+label.it input{appearance:none;-webkit-appearance:none;width:24px;height:24px;flex:none;border:2px solid var(--line);border-radius:7px;background:var(--paper);position:relative;cursor:pointer;margin:0}
+label.it input:checked{background:var(--today);border-color:var(--today)}
+label.it input:checked::after{content:"";position:absolute;left:7px;top:3px;width:6px;height:11px;border:solid #fff;border-width:0 2.5px 2.5px 0;transform:rotate(42deg)}
+.nm{flex:1;font-size:16px;line-height:1.35}
+.m{font-family:"IBM Plex Mono",monospace;font-size:13.5px;color:var(--meta);font-variant-numeric:tabular-nums;white-space:nowrap}
+label.it.done .nm{color:var(--meta);text-decoration:line-through;text-decoration-thickness:1px}
+label.it.school{border-color:var(--school-line);background:var(--school-soft)}
+label.it.school .nm{font-weight:500}
+.tag{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--school);border:1px solid var(--school-line);border-radius:99px;padding:2px 7px;white-space:nowrap}
+.rest{background:var(--surface);border:1px dashed var(--line);border-radius:11px;padding:15px 16px;font-size:15px;color:var(--ink-2)}
+.rest b{font-weight:500;color:var(--ink)}
+.note{font-size:13.5px;color:var(--meta);margin:9px 0 0;line-height:1.5}
+footer{margin:34px 0 0;padding-top:18px;border-top:1px solid var(--line);font-size:13px;color:var(--meta);display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+button.reset{font:inherit;font-size:13px;color:var(--accent);background:none;border:none;padding:0;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+@media (prefers-reduced-motion:reduce){.fill{transition:none}}
+</style>
+<div class="wrap">
+<header>
+  <p class="eyebrow">Tanglin Year 4 &middot; <span id="wk">Term 1</span> &middot; Today</p>
+  <h1 id="day"></h1>
+  <p class="date" id="date"></p>
+  <p class="ctx" id="ctx"></p>
+  <div class="bar"><div class="track"><div class="fill" id="fill"></div></div><span class="pct" id="pct"></span></div>
+</header>
+<section><p class="bl">Morning</p><div class="list" id="am"></div></section>
+<section><p class="bl" id="pmLabel">After school</p><div class="list" id="pm"></div></section>
+<section><div class="rest"><b>Bedtime</b> &mdash; her own book, or you read to her. Not the banded book, not logged, not corrected.</div>
+  <p class="note" id="extra"></p>
+</section>
+<footer><span>Ticks are kept on this device and clear each day.</span><button class="reset" id="reset">Clear today</button></footer>
+</div>
+<script>
+var DAYS=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+var SCHED={
+1:{ctx:"Gymnastics 15:00–17:00 · collected by car, home ~17:30",read:"after snack, ~17:45",
+   items:[["Reading — banded book, aloud",20,"school"],["Spelling app",5,""],["TT Rockstars — Garage",5,""],["NumBots",5,""]]},
+2:{ctx:"Rock climbing 15:00–16:00 · 4pm bus, home ~16:45 · Week 7",read:"after snack, ~17:00",
+   items:[["Reading — banded book, aloud",20,"school"],["Pre-learning: diversity",20,"school"],["Spelling app",5,""],["TT Rockstars — Garage",5,""],["Synthesis",15,""]]},
+3:{ctx:"Gymnastics 15:00–17:00 · collected by car, home ~17:30",read:"after snack, ~17:45",
+   items:[["Reading — banded book, aloud",20,"school"],["Spelling app",5,""],["TT Rockstars — Garage",5,""],["NumBots",5,""]]},
+4:{ctx:"No CCA · 3pm bus, home ~15:45 · Week 7",read:"after snack, ~16:00",
+   items:[["Reading — banded book, aloud",20,"school"],["Maths: times-table recall",20,"school"],["Spelling app",5,""],["TT Rockstars — Garage",5,""],["Synthesis",15,""]]},
+5:{ctx:"No CCA · 3pm bus, home ~15:45 · Week 7",read:"after snack, ~16:00",
+   items:[["Reading — banded book, aloud",20,"school"],["ESB: choose book extract",20,"school"],["Spelling app",5,""],["TT Rockstars — Garage",5,""],["Synthesis",15,""]]},
+6:{ctx:"Weekend",read:"late morning",
+   items:[["Reading — banded book, aloud",20,"school"],["Spelling app",5,""],["Synthesis",20,""],["TT Rockstars — Garage",5,""]]},
+0:{ctx:"Weekend · Week 7 Book A · pack Book A and the chosen ESB book for Monday",read:"late morning",
+   items:[["Reading — banded book, aloud",20,"school"],["Spelling app",5,""],["Synthesis",20,""],["TT Rockstars — Garage",5,""]]}
+};
+// Date-specific overrides (maintained by Tanglin Trust). Keys YYYY-MM-DD.
+var OVERRIDE={};
+var HALF={ctx:"Half-term \u00b7 no school until Tue 27 Oct",read:"late morning",
+  items:[["Reading \u2014 own/banded book, aloud",20,""],["Spelling app",5,""],["TT Rockstars \u2014 Garage",5,""]]};
+var CAMP={ctx:"Half-term \u00b7 Gym & Dance camp 09:00\u201313:30, Gymnastics Centre L2 TCB \u00b7 pack water, snack, gym kit \u00b7 pick-up 13:30",read:"after lunch, ~15:00",
+  items:HALF.items};
+["2026-10-12","2026-10-13","2026-10-14","2026-10-15","2026-10-16"].forEach(function(k){OVERRIDE[k]=CAMP});
+["2026-10-17","2026-10-18","2026-10-19","2026-10-20","2026-10-21","2026-10-22","2026-10-23","2026-10-24","2026-10-25"].forEach(function(k){OVERRIDE[k]=HALF});
+OVERRIDE["2026-10-26"]={ctx:"Staff PD day \u00b7 no school \u00b7 flight home 12:50",read:"evening",items:HALF.items,extra:"Back to school tomorrow (Tue 27 Oct). Pack bag and library book tonight."};
+OVERRIDE["2026-10-30"]={ctx:"House Day \u00b7 house kit all day \u00b7 Y4 Swimming Gala P4\u20135 (full swim kit) \u00b7 snack + CCAs as usual",read:"after snack, ~16:00",items:null};
+var WEEK="Term 1";
+function dayTotal(d){var n=5;SCHED[d].items.forEach(function(i){n+=i[1]});return n}
+
+(function(){
+  var now=new Date(), d=now.getDay();
+  var dateKey=now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0')+'-'+String(now.getDate()).padStart(2,'0');
+  var o=OVERRIDE[dateKey], s=SCHED[d];
+  if(o){ s={ctx:o.ctx,read:o.read||s.read,items:o.items||s.items,extra:o.extra}; }
+  document.getElementById('wk').textContent=WEEK;
+  var esbTask=dateKey>='2026-10-05'&&dateKey<='2026-10-11'
+    ? ((d===1||d===3||d===5||d===0)?'ESB: poem practice':'ESB: book extract')
+    : '';
+  var key='celina-'+now.getFullYear()+'-'+(now.getMonth()+1)+'-'+now.getDate();
+  var state={};
+  try{ state=JSON.parse(localStorage.getItem(key)||'{}')||{}; }catch(e){ state={}; }
+  function save(){ try{ localStorage.setItem(key,JSON.stringify(state)); }catch(e){} }
+
+  document.getElementById('day').textContent=DAYS[d];
+  document.getElementById('date').textContent=now.toLocaleDateString(undefined,{day:'numeric',month:'long',year:'numeric'});
+  document.getElementById('ctx').textContent=s.ctx;
+  document.getElementById('pmLabel').textContent='After school \u00b7 reading '+s.read;
+  if(s.extra){document.getElementById('extra').textContent=s.extra;}
+  else if(d===0&&!o){document.getElementById('extra').textContent='Pack Book A and the chosen ESB book, with the extract pages marked, for Monday.';}
+
+  var rows=[];
+  function add(where,name,mins,isSchool,id){
+    var l=document.createElement('label'); l.className='it'+(isSchool?' school':'');
+    l.innerHTML='<input type="checkbox" aria-label="'+name+'"><span class="nm">'+name+'</span>'+
+      (isSchool?'<span class="tag">School</span>':'')+'<span class="m">'+mins+'\u200amin</span>';
+    var cb=l.querySelector('input');
+    cb.checked=!!state[id];
+    if(cb.checked) l.classList.add('done');
+    cb.addEventListener('change',function(){
+      state[id]=cb.checked; l.classList.toggle('done',cb.checked); save(); tally();
+    });
+    document.getElementById(where).appendChild(l);
+    rows.push({cb:cb,m:mins});
+  }
+  add('am','Duolingo \u2014 German',5,false,'am');
+  s.items.forEach(function(i,n){
+    add('pm',i[0],i[1],i[2]==='school','pm'+n);
+    if(n===0&&esbTask) add('pm',esbTask,5,false,'esb');
+  });
+
+  function tally(){
+    var total=0,done=0;
+    rows.forEach(function(r){ total+=r.m; if(r.cb.checked) done+=r.m; });
+    var p=total?Math.round(done/total*100):0;
+    document.getElementById('fill').style.width=p+'%';
+    document.getElementById('pct').textContent=done+' / '+total+' min';
+  }
+  tally();
+  document.getElementById('reset').addEventListener('click',function(){
+    state={}; save();
+    rows.forEach(function(r){ r.cb.checked=false; r.cb.closest('label').classList.remove('done'); });
+    tally();
+  });
+})();
+</script>
