@@ -1,0 +1,129 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Celina's Week</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --paper:#F6F8FB; --surface:#FFFFFF; --surface-2:#EDF1F7;
+  --ink:#14243F; --ink-2:#33455F; --meta:#5B6E8C;
+  --line:#D9E0EA; --line-soft:#E7ECF3;
+  --accent:#B3324A; --accent-soft:#FBEEF1; --accent-line:#E8C3CC;
+  --school:#1F5C8B; --school-soft:#E9F1F8; --school-line:#BFD7E8;
+  --today:#0F7A5A; --today-soft:#E7F4EF; --today-line:#B4DCCB;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#0E1622; --surface:#151F2E; --surface-2:#1B2637;
+  --ink:#E7ECF3; --ink-2:#C3CEDD; --meta:#8FA2BC;
+  --line:#27344A; --line-soft:#1F2A3C;
+  --accent:#EC8399; --accent-soft:#2A1A21; --accent-line:#4A2B35;
+  --school:#79B4DF; --school-soft:#12212D; --school-line:#2A4155;
+  --today:#5FCFA6; --today-soft:#0F2620; --today-line:#255043;
+}}
+:root[data-theme="dark"]{
+  --paper:#0E1622; --surface:#151F2E; --surface-2:#1B2637;
+  --ink:#E7ECF3; --ink-2:#C3CEDD; --meta:#8FA2BC;
+  --line:#27344A; --line-soft:#1F2A3C;
+  --accent:#EC8399; --accent-soft:#2A1A21; --accent-line:#4A2B35;
+  --school:#79B4DF; --school-soft:#12212D; --school-line:#2A4155;
+  --today:#5FCFA6; --today-soft:#0F2620; --today-line:#255043;
+}
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1240px;margin:0 auto;padding:0 22px}
+header{padding:38px 0 22px;border-bottom:1px solid var(--line)}
+.eyebrow{font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--meta);margin:0 0 8px}
+h1{font-family:Newsreader,Georgia,serif;font-weight:600;font-size:clamp(30px,4.4vw,44px);line-height:1.1;margin:0;letter-spacing:-.015em}
+.sub{color:var(--meta);font-size:14.5px;margin:9px 0 0;max-width:62ch}
+.totals{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0 0}
+.chip{font-family:"IBM Plex Mono",monospace;font-size:12px;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:5px 13px;color:var(--ink-2)}
+.chip b{color:var(--ink);font-weight:500}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(228px,1fr));gap:14px;padding:26px 0 60px}
+.day{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 17px;display:flex;flex-direction:column;gap:12px}
+.day.is-today{border-color:var(--today-line);box-shadow:0 0 0 2px var(--today-soft)}
+.dh{display:flex;align-items:baseline;justify-content:space-between;gap:10px;border-bottom:1px solid var(--line-soft);padding-bottom:10px}
+.dn{font-family:Newsreader,Georgia,serif;font-size:23px;font-weight:600;line-height:1}
+.dt{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--meta);font-variant-numeric:tabular-nums;white-space:nowrap}
+.now{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--today);background:var(--today-soft);border:1px solid var(--today-line);border-radius:999px;padding:2px 8px}
+.ctx{font-size:12.5px;color:var(--meta);line-height:1.45;margin:-4px 0 0}
+.blk{display:flex;flex-direction:column;gap:6px}
+.bl{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:var(--meta)}
+.it{display:flex;justify-content:space-between;gap:10px;font-size:14px;line-height:1.4;align-items:baseline}
+.it .m{font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--meta);font-variant-numeric:tabular-nums;white-space:nowrap}
+.it.school .nm{color:var(--school);font-weight:500}
+.it.school .nm::after{content:"·";margin-left:6px;color:var(--school-line)}
+.rest{font-size:13px;color:var(--meta);font-style:italic}
+.legend{border-top:1px solid var(--line);padding:20px 0 60px;display:flex;flex-wrap:wrap;gap:22px;font-size:13.5px;color:var(--meta)}
+.legend b{color:var(--ink);font-weight:500}
+.key{display:inline-flex;align-items:center;gap:7px}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--school);flex:none}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+<div class="wrap">
+<header>
+  <p class="eyebrow">Tanglin Year 4 &middot; Term 1 Week 7 &middot; Week A, Book A</p>
+  <h1>Celina&rsquo;s Week</h1>
+  <p class="sub">Week 7 runs Monday 28 September to Sunday 4 October. Blue items are set or required by the school; everything else is added on top. Written work goes in Book A. Today is outlined.</p>
+  <div class="totals" id="totals"></div>
+</header>
+<div class="grid" id="grid"></div>
+<div class="legend">
+  <span class="key"><span class="dot"></span><b>School</b> &mdash; set work and the daily reading</span>
+  <span class="key"><b>Reading</b> is always in her freshest slot, never at bedtime</span>
+  <span class="key"><b>Bedtime</b> is her own book or being read to &mdash; not logged</span>
+</div>
+</div>
+<script>
+var DAYS=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+var SCHED={
+1:{ctx:"Gymnastics 15:00–17:00 · collected by car, home ~17:30",read:"after snack, ~17:45",
+   items:[["Reading — banded book, aloud",20,"school"],["Spelling app",5,""],["TT Rockstars — Garage",5,""],["NumBots",5,""]]},
+2:{ctx:"Rock climbing 15:00–16:00 · 4pm bus, home ~16:45",read:"after snack, ~17:00",
+   items:[["Reading — banded book, aloud",20,"school"],["Pre-learning: diversity",20,"school"],["Spelling app",5,""],["TT Rockstars — Garage",5,""],["Synthesis",15,""]]},
+3:{ctx:"Gymnastics 15:00–17:00 · collected by car, home ~17:30",read:"after snack, ~17:45",
+   items:[["Reading — banded book, aloud",20,"school"],["Spelling app",5,""],["TT Rockstars — Garage",5,""],["NumBots",5,""]]},
+4:{ctx:"No CCA · 3pm bus, home ~15:45",read:"after snack, ~16:00",
+   items:[["Reading — banded book, aloud",20,"school"],["Maths: times-table recall",20,"school"],["Spelling app",5,""],["TT Rockstars — Garage",5,""],["Synthesis",15,""]]},
+5:{ctx:"No CCA · 3pm bus, home ~15:45",read:"after snack, ~16:00",
+   items:[["Reading — banded book, aloud",20,"school"],["ESB: choose book extract",20,"school"],["Spelling app",5,""],["TT Rockstars — Garage",5,""],["Synthesis",15,""]]},
+6:{ctx:"Weekend",read:"late morning",
+   items:[["Reading — banded book, aloud",20,"school"],["Spelling app",5,""],["Synthesis",20,""],["TT Rockstars — Garage",5,""]]},
+0:{ctx:"Weekend · pack Book A and the chosen ESB book for Monday",read:"late morning",
+   items:[["Reading — banded book, aloud",20,"school"],["Spelling app",5,""],["Synthesis",20,""],["TT Rockstars — Garage",5,""]]}
+};
+function dayTotal(d){var n=5;SCHED[d].items.forEach(function(i){n+=i[1]});return n}
+
+(function(){
+  var today=new Date().getDay();
+  var order=[1,2,3,4,5,6,0];
+  var grid=document.getElementById('grid');
+  var week=0;
+  order.forEach(function(d){
+    var s=SCHED[d], tot=dayTotal(d); week+=tot;
+    var el=document.createElement('section');
+    el.className='day'+(d===today?' is-today':'');
+    var items=s.items.map(function(i){
+      return '<div class="it'+(i[2]==='school'?' school':'')+'"><span class="nm">'+i[0]+'</span><span class="m">'+i[1]+'&#8202;min</span></div>';
+    }).join('');
+    el.innerHTML =
+      '<div class="dh"><span class="dn">'+DAYS[d]+'</span>'+
+      (d===today?'<span class="now">Today</span>':'')+
+      '<span class="dt">'+tot+' min</span></div>'+
+      '<p class="ctx">'+s.ctx+'</p>'+
+      '<div class="blk"><div class="bl">Morning</div>'+
+      '<div class="it"><span class="nm">Duolingo &mdash; German</span><span class="m">5&#8202;min</span></div></div>'+
+      '<div class="blk"><div class="bl">After school &middot; reading '+s.read+'</div>'+items+'</div>'+
+      '<div class="blk"><div class="rest">Bedtime &mdash; her book, or you read to her</div></div>';
+    grid.appendChild(el);
+  });
+  var h=Math.floor(week/60), m=week%60;
+  document.getElementById('totals').innerHTML =
+    '<span class="chip">Week <b>'+h+'h '+m+'m</b></span>'+
+    '<span class="chip">School sets <b>60 min</b></span>'+
+    '<span class="chip">Reading <b>140 min</b></span>'+
+    '<span class="chip">Added on top <b>'+(week-200)+' min</b></span>';
+})();
+</script>

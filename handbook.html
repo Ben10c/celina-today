@@ -1,0 +1,979 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Celina's Year 4 Handbook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --paper:#F6F8FB; --surface:#FFFFFF; --surface-2:#EDF1F7;
+  --ink:#14243F; --ink-2:#33455F; --meta:#5B6E8C;
+  --line:#D9E0EA; --line-soft:#E7ECF3;
+  --accent:#B3324A; --accent-soft:#FBEEF1; --accent-line:#E8C3CC;
+  --flag:#8A5A12; --flag-soft:#FDF4E4; --flag-line:#EBD6AC;
+  --shadow:0 1px 2px rgba(20,36,63,.06),0 8px 24px -16px rgba(20,36,63,.24);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#0E1622; --surface:#151F2E; --surface-2:#1B2637;
+    --ink:#E7ECF3; --ink-2:#C3CEDD; --meta:#8FA2BC;
+    --line:#27344A; --line-soft:#1F2A3C;
+    --accent:#EC8399; --accent-soft:#2A1A21; --accent-line:#4A2B35;
+    --flag:#E3B872; --flag-soft:#241D10; --flag-line:#463519;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -16px rgba(0,0,0,.7);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0E1622; --surface:#151F2E; --surface-2:#1B2637;
+  --ink:#E7ECF3; --ink-2:#C3CEDD; --meta:#8FA2BC;
+  --line:#27344A; --line-soft:#1F2A3C;
+  --accent:#EC8399; --accent-soft:#2A1A21; --accent-line:#4A2B35;
+  --flag:#E3B872; --flag-soft:#241D10; --flag-line:#463519;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -16px rgba(0,0,0,.7);
+}
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-size:18px; line-height:1.7; -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+/* masthead */
+.masthead{border-bottom:1px solid var(--line);background:var(--surface)}
+.mast-inner{display:flex;flex-wrap:wrap;gap:20px 40px;align-items:flex-end;justify-content:space-between;padding:44px 0 30px}
+.eyebrow{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--meta);margin:0 0 10px}
+h1.mast{font-family:Newsreader,Georgia,serif;font-weight:600;font-size:clamp(34px,5vw,52px);line-height:1.08;margin:0;letter-spacing:-.015em;text-wrap:balance}
+.mast-sub{color:var(--meta);font-size:15px;margin:10px 0 0;max-width:52ch}
+.stamp{font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--meta);text-align:right;line-height:1.9}
+.stamp b{color:var(--ink);font-weight:500}
+/* glance strip */
+.glance{display:grid;grid-template-columns:repeat(auto-fit,minmax(158px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden;margin:30px 0 4px}
+.g{background:var(--surface);padding:16px 18px}
+.g .k{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--meta)}
+.g .v{font-family:Newsreader,Georgia,serif;font-size:26px;line-height:1.25;margin-top:5px;font-variant-numeric:tabular-nums}
+.g .n{font-size:13.5px;color:var(--meta);line-height:1.5}
+/* layout */
+.cols{display:grid;grid-template-columns:238px minmax(0,1fr);gap:56px;padding:44px 0 90px;align-items:start}
+@media (max-width:900px){.cols{grid-template-columns:1fr;gap:0;padding-top:28px}}
+nav.rail{position:sticky;top:24px;font-size:14.5px}
+@media (max-width:900px){nav.rail{position:static;margin-bottom:36px;border:1px solid var(--line);border-radius:10px;background:var(--surface);padding:18px 20px}}
+nav.rail .rl{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--meta);padding-bottom:10px;border-bottom:1px solid var(--line);margin-bottom:12px}
+nav.rail ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:1px;counter-reset:s}
+nav.rail a{display:flex;gap:11px;padding:6px 8px;margin-left:-8px;border-radius:6px;text-decoration:none;color:var(--ink-2);line-height:1.4}
+nav.rail a:hover{background:var(--surface-2);color:var(--ink)}
+nav.rail a:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+nav.rail a.on{color:var(--accent);font-weight:500}
+nav.rail .num{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--meta);padding-top:2px;min-width:15px}
+nav.rail a.on .num{color:var(--accent)}
+/* article */
+article{min-width:0;max-width:74ch}
+article h1{font-family:Newsreader,Georgia,serif;font-weight:600;font-size:clamp(27px,3.4vw,34px);line-height:1.18;letter-spacing:-.012em;margin:64px 0 6px;padding-top:26px;border-top:2px solid var(--ink);text-wrap:balance}
+article > h1:first-child{margin-top:0;border-top:none;padding-top:0}
+article h2{font-family:Newsreader,Georgia,serif;font-weight:600;font-size:22.5px;line-height:1.3;margin:42px 0 12px;text-wrap:balance}
+article h3{font-size:15px;font-weight:600;letter-spacing:.045em;text-transform:uppercase;color:var(--accent);margin:32px 0 10px}
+article p{margin:0 0 16px}
+article ul,article ol{margin:0 0 18px;padding-left:22px}
+article li{margin-bottom:7px}
+article li::marker{color:var(--meta)}
+article strong{font-weight:600}
+article a{color:var(--accent);text-underline-offset:2px}
+hr{border:none;border-top:1px solid var(--line-soft);margin:40px 0}
+code{font-family:"IBM Plex Mono",monospace;font-size:.855em;background:var(--surface-2);padding:.14em .42em;border-radius:4px;color:var(--ink-2);word-break:break-word}
+blockquote{margin:22px 0;padding:16px 22px;border-left:3px solid var(--accent);background:var(--accent-soft);border-radius:0 8px 8px 0;color:var(--ink-2)}
+blockquote p{margin:0 0 10px}
+blockquote p:last-child{margin:0}
+blockquote em{font-family:Newsreader,Georgia,serif;font-style:italic;font-size:19px;line-height:1.6}
+.tw{overflow-x:auto;margin:0 0 22px;border:1px solid var(--line);border-radius:9px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:15.5px;line-height:1.55}
+th,td{text-align:left;padding:11px 15px;border-bottom:1px solid var(--line-soft);vertical-align:top}
+thead th{background:var(--surface-2);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--meta);font-weight:600;white-space:nowrap;border-bottom:1px solid var(--line)}
+tbody tr:last-child td{border-bottom:none}
+td:first-child{font-variant-numeric:tabular-nums}
+/* callouts derived from leading glyph */
+p.flag{background:var(--flag-soft);border:1px solid var(--flag-line);border-left:3px solid var(--flag);border-radius:0 8px 8px 0;padding:14px 18px;margin:0 0 20px;color:var(--ink-2)}
+p.star{background:var(--accent-soft);border:1px solid var(--accent-line);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;padding:14px 18px;margin:0 0 20px;color:var(--ink-2)}
+footer{border-top:1px solid var(--line);padding:26px 0 50px;color:var(--meta);font-size:13.5px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+html{scroll-behavior:smooth}
+article h1{scroll-margin-top:20px}
+</style>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="mast-inner">
+      <div>
+        <p class="eyebrow">Tanglin Trust School &middot; 2026&ndash;27</p>
+        <h1 class="mast">Celina&rsquo;s Year 4 Handbook</h1>
+        <p class="mast-sub">Everything that governs the school year in one place &mdash; how home learning works, what she is taught, and the dates that matter.</p>
+      </div>
+      <div class="stamp">
+        Compiled <b>31 Aug 2026</b> · updated <b>8 Sep</b><br>
+        Sources <b>9 documents</b><br>
+        Files <b>Claude/Tanglin/</b>
+      </div>
+    </div>
+
+<div class="glance">
+  <div class="g"><div class="k">Base class</div><div class="v">4.8</div><div class="n">Mr Daniel Barron</div></div>
+  <div class="g"><div class="k">Home learning</div><div class="v">60 min</div><div class="n">per week, set Mondays</div></div>
+  <div class="g"><div class="k">Reading</div><div class="v">20 min</div><div class="n">daily, aloud with an adult</div></div>
+  <div class="g"><div class="k">Times tables</div><div class="v">12 &times; 12</div><div class="n">fluent by end of Year 4</div></div>
+  <div class="g"><div class="k">Term 1 ends</div><div class="v">11 Dec</div><div class="n">half term 12&ndash;26 Oct</div></div>
+</div>
+  </div>
+</header>
+<div class="wrap">
+  <div class="cols">
+    <nav class="rail" aria-label="Sections">
+      <div class="rl">Contents</div>
+      <ol><li><a href="#s1"><span class="num">1</span><span>Home learning</span></a></li>
+<li><a href="#s1a"><span class="num">1a</span><span>Celina's weekly schedule</span></a></li>
+<li><a href="#s1b"><span class="num">1b</span><span>Home learning log</span></a></li>
+<li><a href="#s2"><span class="num">2</span><span>Term 1 curriculum</span></a></li>
+<li><a href="#s3"><span class="num">3</span><span>Maths in depth</span></a></li>
+<li><a href="#s4"><span class="num">4</span><span>Public speaking and the ESB exam</span></a></li>
+<li><a href="#s5"><span class="num">5</span><span>Personalised learning</span></a></li>
+<li><a href="#s6"><span class="num">6</span><span>Who's who</span></a></li>
+<li><a href="#s7"><span class="num">7</span><span>The school day and logistics</span></a></li>
+<li><a href="#s8"><span class="num">8</span><span>Term 1 dates that matter for Year 4</span></a></li>
+<li><a href="#s9"><span class="num">9</span><span>Reading and the library</span></a></li>
+<li><a href="#s10"><span class="num">10</span><span>Communication and links</span></a></li>
+<li><a href="#s11"><span class="num">11</span><span>Flags and unresolved conflicts</span></a></li></ol>
+    </nav>
+    <article id="doc"></article>
+  </div>
+</div>
+<footer class="wrap">
+  Source of record: <code>Claude/Tanglin/TANGLIN-YEAR4.md</code>. Supporting PDFs in <code>Claude/Tanglin/maths/</code>.
+  Flags and unresolved conflicts are listed in section 11.
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js"></script>
+<script id="src" type="text/markdown">
+# Tanglin Trust — Year 4 (2026-27), Celina
+
+Consolidated reference for Celina's year. **Base class 4.8, Mr Daniel Barron.**
+
+**Compiled 31 Aug 2026.** Sources, all read in full:
+- Year 4 Parent Information Evening Slides (Aug 2026) — portal doc `3197`, 42 slides
+- Year 4 Curriculum Overview, Term 1 2026-27 — portal doc `3111`, 5 pages
+- **Year 4 Home Learning Guidelines** — the printed booklet sent home with Celina (photographed)
+- Junior Maths Microsite — `sites.google.com/tts.edu.sg/jnrschoolmathematics`
+- ParentWise Workshops — portal doc `339`
+- Junior School Curriculum — portal doc `416`
+- Year 4 Newsletter, 17 Aug 2026 — portal doc `3157`
+- In Touch Weeks 1–2; Junior Library microsite `library.tts.edu.sg/junior/`
+- **Home learning sheets, as set** — filed in `Claude/Tanglin/home-learning/` (Term 1 Week 3 onward)
+
+Portal access: Chrome cookie import, sandbox off, leading-dot domain. See the access note in memory.
+
+---
+
+# 1. Home learning — the core of it
+
+This is the practical guide. **60 minutes per week of set work, plus 20 minutes of reading every day.**
+
+## At a glance
+
+| | |
+|---|---|
+| Set | **Every Monday**, online via Google Classroom |
+| Returned | **The following Monday** — completed book in, next book out |
+| Started | Week 3 (Mon 31 Aug 2026) |
+| Total | ~60 min/week set work + 20 min/day reading |
+| Books | **Two books, A and B, alternating.** Week A = Book A, Week B = Book B |
+
+The A/B book cycle runs on the same Week A / Week B rotation as 4.8's fortnightly Tuesday library slot.
+
+## A session, in order
+
+**1. Spelling — 20 min → 2. Maths — 20 min → 3. Pre-learning — 20 min.** Plus **reading, 20 min per day.**
+
+- **Presentation:** pencil and ruler. Add the week and task as a title. Take pride in neat, well-presented work.
+- **If you finish early:** use the remaining time to read, or do one of the optional maths or spelling activities.
+- **If it's difficult:** *stop after the allocated time.* Parents add a note in the book if the child needs further support.
+- Standing rule, verbatim: *"Home learning should fit within the allocated time — there is no need to continue for significantly longer."*
+
+## Mathematics — "short, focused practice that builds fluency"
+
+- **Fluency.** Practise and retain key foundational maths knowledge and skills. Aim is confidence and *automaticity* through short, purposeful activities.
+- **20 minutes.** Designed to be short, effective and completed **independently**. Should not need long periods at home.
+- **3 choices.** The maths teacher tells the child which *one* activity to complete — task 1, 2 or 3.
+- **Key expectation:** children must **show all their working out**. Maths work goes on the **squared paper** in the home learning book.
+- Verbatim: *"Regular, focused practice is more valuable than lengthy home learning."*
+
+## Spelling — "practise, apply and remember"
+
+- **Consolidate.** Regular opportunities to practise and reinforce the spelling patterns and words being learnt in class.
+- **Practise.** Activities follow a **two-week cycle**. The structure stays consistent; the activities vary to keep practice engaging.
+- **Remember.** Tasks are chosen to help children learn and *retain* spellings.
+
+⚠️ This supersedes the older "one spelling task each week" line in the 17 Aug newsletter — the booklet specifies a two-week cycle.
+
+## Reading — 20 minutes a day, aloud, with an adult
+
+- Read **aloud with an adult for 20 minutes each day**, to build **confidence, fluency, vocabulary and a love of reading**.
+- The child may choose **their own book** *or* their **colour-banded school reading book** — the banded book is carefully selected by the teacher to match reading ability and provide appropriate challenge.
+- **Record the 20 minutes daily in the school diary** and have it signed.
+- A **reading folder** protects the books — it's on the "what to bring" list.
+
+## Pre-learning task — the distinctive one
+
+A task set *before* the lesson it relates to. Four steps:
+
+**THINK** — what do I already know? → **EXPLORE** — investigate, observe or consider a question → **BRING IT TO SCHOOL** — share ideas and discoveries → **LEARN** — the task becomes the starting point for discussion and further learning.
+
+- **Why:** research suggests home learning is most effective when it is short, purposeful, frequent and high quality. The school deliberately focuses on **quality and purpose rather than time spent**.
+- **Metacognition:** encouraging children to think about what they're learning and what they already know builds self-awareness as learners and greater independence.
+- Verbatim: *"Pre-learning tasks give children a sense of ownership, allowing them to arrive at a lesson with ideas, questions and experiences that they are ready to contribute."*
+
+## Marking & feedback — "meaningful feedback, not marking for the sake of marking"
+
+| Task | How it's responded to |
+|---|---|
+| **Maths** | Reviewed during the maths lesson through marking or teacher-led self-assessment, depending on the activity |
+| **Spelling** | Marked by the class teacher |
+| **Pre-learning** | Used and discussed in the lesson — questioning, class discussion, peer discussion, application |
+
+Effective feedback can be **verbal**. Verbal feedback helps children understand what they did well, addresses misunderstandings, and identifies how to improve.
+
+**How will I know?** — *a stamp in the home learning book* shows verbal feedback has been given and the task discussed or used in the lesson.
+
+## Google Classroom — how to find the work
+
+1. Open **Google Classroom**
+2. **Sign in** with the child's school Google account — **login details are on the sticker in the back of the diary**
+3. Select the **base class** (Celina: 4.8)
+4. Click **Classwork**
+5. Find **Home Learning** (topic filter)
+6. Choose the correct week — labelled by term and week, e.g. "Home Learning, Term 1 Week 3"
+
+*"Read the instructions carefully and complete the activities in the home learning book unless the task says otherwise."*
+
+---
+
+# 1a. Celina's weekly schedule
+
+Built around her actual week: **Gymnastics Mon + Wed 15:00–17:00** (collected by car — there is no 5pm bus for Years 3–4), **Rock Climbing Tue 15:00–16:00** (4pm bus), and free afternoons Thu + Fri on the 3pm bus.
+
+**Two layers that do not trade against each other:** reading is a fixed daily prescription; the three set tasks are the only thing that moves.
+
+## The week, day by day
+
+Three blocks: a 5-minute **morning** slot for German, the **after-school** block that carries everything else, and a **bedtime** routine that is not homework.
+
+### Morning — 5 min, every day
+
+**Duolingo German, 5 minutes.** Short, streak-driven, and it survives a rushed morning — which is why it gets the one slot nothing else competes for. Given the German in the family it is the item most worth protecting after the school's own work.
+
+The **spelling app** sits in the after-school block with everything else — 5 minutes daily, light retrieval practice. It complements the school's set spelling task rather than duplicating it: daily retrieval against the weekly set piece.
+
+### After school
+
+| Day | Morning · German | Reading | Set task | Maths — every day | Spelling app | Day total |
+|---|---|---|---|---|---|---|---|
+| **Mon** · gym, home ~17:30 | Duolingo 5 | 20 | — | TTRS 5 + **Numbots** 5 | 5 | **40** |
+| **Tue** · climbing, home ~16:45 | Duolingo 5 | 20 | **Pre-learning** 20 | TTRS 5 + **Synthesis** 15 | 5 | **70** |
+| **Wed** · gym, home ~17:30 | Duolingo 5 | 20 | — | TTRS 5 + **Numbots** 5 | 5 | **40** |
+| **Thu** · home ~15:45 | Duolingo 5 | 20 | **Maths** 20 | TTRS 5 + **Synthesis** 15 | 5 | **70** |
+| **Fri** · home ~15:45 | Duolingo 5 | 20 | **Spelling** 20 | TTRS 5 + **Synthesis** 15 | 5 | **70** |
+| **Sat** | Duolingo 5 | 20 | — | TTRS 5 + **Synthesis 20** | 5 | **55** |
+| **Sun** | Duolingo 5 | 20 | — | TTRS 5 + **Synthesis 20** | 5 | **55** |
+
+**Weekly total: 6 hours 40 minutes** (400 min). Of that, **60 min is the school's set work** and **140 min the reading prescription** — the remaining 3 hours 20 minutes is everything added on top.
+
+### Bedtime — every day
+
+Her own choice of book, or you read to her. Never the banded book. Not logged, not corrected, not part of the 20 minutes. See Layer 1b below.
+
+## How the maths tools are spread
+
+**TT Rockstars every single day, 5 minutes.** The one required tool — 12 × 12 by the end of Year 4 is the statutory watershed — and daily short bursts are exactly what it is built for.
+
+| Tool | When | Why there |
+|---|---|---|
+| **TT Rockstars** | Daily, 5 min | Required. Garage mode on red tables, one fact family of four at a time |
+| **Numbots** | Mon + Wed, 5 min | The most game-like of the four, so it takes the two gymnastics days |
+| **Synthesis** | Tue + Thu + Fri 15 min, Sat + Sun 20 min | Adaptive tutor. Short weekday touches, longer weekend sessions |
+
+**Why the tasks sit where they do**
+- **Mon and Wed carry no set task** — she is home at ~17:30 after four hours of gymnastics.
+- **Pre-learning on Tuesday**, early in the week **on purpose** — the task exists to be brought *to* the lesson it precedes. Left until Friday, the lesson may already have happened.
+- **Maths on Thursday** — freshest of the free afternoons.
+- **Spelling on Friday** — lightest task, closes the week.
+
+The routine is lighter after the two long gymnastics days: **Mon and Wed are 35 minutes after arriving home**, **Tuesday is 65 minutes after climbing**, **Thursday and Friday are 65 minutes**, and **the weekends are 55 minutes each**. If anything slides, the Tuesday Synthesis slot goes first.
+
+⚠️ **Numbots is provisional.** It teaches subitising, number bonds to 5/10/20/100 and mental add/subtract — KS1 content. **Test it: can she do 7 + 8 and 13 − 6 instantly, without counting?** If yes, skip it and give those two slots to something else. If she hesitates, it is the highest-value item on the list, because Year 4 requires mental addition of 4-digit numbers and that is built directly on bonds.
+
+⚠️ **Check the spelling app follows Read Write Inc.** That is the school's scheme; this term is prefix *mis*, the "zhuh" sound `-sure`, prefix *auto* and suffix *-ly*. An app running its own sequence pulls against the classroom rather than reinforcing it.
+
+## Layer 1 — reading, every day
+
+**20 minutes, banded book, aloud with an adult.** Placed in her freshest available slot, *not* at bedtime — she loses focus as the evening goes on, and reading aloud is performance work, closer in cognitive cost to the maths task than to a bedtime story.
+
+Log it in the diary daily and have it signed.
+
+## Layer 1b — the bedtime routine (separate, and not the prescription)
+
+Bedtime stays reading — she just isn't the one working at it.
+
+- **Her own choice of book, or you read to her.** Never the banded book: that one is chosen to stretch her and belongs in the earlier slot.
+- **No correcting, no decoding practice, no diary entry.** This slot is not being logged and is not part of the 20 minutes.
+- Its job is the *"love of reading"* half of the school's stated purpose, plus the wind-down. Vocabulary and comprehension still build when she is listening rather than performing.
+- Keep it the same shape every night so it reads as the end of the day, not another task.
+
+## Times tables — outside the 60 minutes
+
+Not a fourth task. Little and often, in the moments the microsite lists: the car, the stairs, setting the table, the bath. Two or three minutes.
+
+Once a week, **5 minutes in TT Rockstars Garage** on her red tables — Garage targets weak facts; Studio only drills speed. Read the heat map first and take one fact family of four at a time. **Hide the Garage clock** if the countdown is a stressor.
+
+## Standing rules
+
+- **Stop at 20 minutes.** If unfinished, write a note in the book — the school does not want it running long.
+- **Maths on the squared paper, all working shown.**
+- **Sunday evening, Week B only:** pack the library folder for Tuesday.
+- Books swap every Monday: completed book in, next book out.
+
+⚠️ **Open question — is the 20 minutes required to be continuous?** None of the sources reachable online says so: the booklet's Reading panel, the "at a glance" page and the session page all say *"20 minutes each day"* / *"per day"* with no continuity wording, and the PIE slides and 17 Aug newsletter likewise. **But only 5 photographed pages of the printed booklet have been read**, and it is not published on the portal, so the physical copy is the authority. If it specifies 20 minutes in one sitting, that governs — do not split the session.
+
+---
+
+# 1b. Home learning log — Term 1
+
+The set sheets are filed locally in `Claude/Tanglin/home-learning/`. One entry per week, newest first.
+
+## Week 5 - Week A, **Book A** · set Mon 14 Sept 2026 · due Mon 21 Sept 2026
+
+Sheet: `Year 4 Term 1 Week 5.pdf` (8 pages). This is the current Week A sheet, so all written work goes in **Book A**. The home rhythm places the three 20-minute set tasks on **Tuesday = science pre-learning**, **Thursday = maths**, and **Friday = spelling**, with 20 minutes of reading aloud every day. Weekly plan: [Week 5](week5-coaching.html).
+
+### Task 1 - Spelling (20 min): `-sure` and `-ture`
+
+Recap the `/zhuh/` sound in `-sure` as in *pleasure*, and the `-ture` ending as in *picture*. Core words: *pressure, closure, treasure, leisure, pleasure, measure, mixture, picture, puncture, creature, adventure, capture*. Optional stretch: make a word web with synonyms, antonyms, related words, and an example sentence.
+
+### Task 2 - Maths (20 min): multiplication
+
+Choose one of the three challenges in the sheet. Use a part-whole model to multiply tens and ones separately, add the partial products, and exchange when needed. Work on squared paper and show the working. Optional stretch: use three of `2, 3, 5, 6, 8` to make two-digit x one-digit multiplications, including an arrangement that exchanges in both columns and two products between 250 and 450.
+
+### Task 3 - Pre-learning (20 min): science adaptations
+
+Create at least three Top Trumps cards for real tropical-rainforest animals. Name and draw each animal, score **speed, climbing, camouflage, and defence** from 1 to 5, and add one special feature explaining how it helps the animal survive. The WAGOLL models a jaguar, three-toed sloth, and poison dart frog. An **adaptation** is a body-part feature or behaviour that helps an animal survive in its habitat.
+
+### Reading
+
+Read aloud to an adult for 20 minutes every day. On Sunday, check presentation and pack **Book A** for hand-in on Monday 21 September.
+
+## Week 4 — Week B, **Book B** · set Mon 7 Sept 2026 · due Mon 14 Sept 2026
+
+Sheet: `home-learning/T1-W4.pdf` (8 pages). ⚠️ The cover page says *"Term 1 Week 3"* — a copy-paste slip; it is dated *Set: Monday 7th September* and the schedule page says *Week 4 – Week B (Book B)*. Title the work **Week 4**. Onto Celina's week: **Tue = pre-learning · Thu = maths · Fri = spelling**, reading every day. Coaching card: https://claude.ai/code/artifact/06bc0e04-c4ff-4eb0-8255-37fa2df2ae36
+
+### Task 1 — Spelling (20 min): prefix *mis-*, week two of the cycle
+
+**Rule:** *mis-* means "wrongly" or "badly" (*misbehave, misplace*). Week 2 of RWI Unit 1 — the *apply* half.
+
+**Vocab vault (8):** mistake · misuse · misbehave · misfortune · mislead · mistreat · misjudge · misheard
+
+**Show it!** — read three sentences, **write them out in the book and underline every vault word**:
+1. *I misheard the instructions and made a mistake, so I accidentally misused the equipment.*
+2. *Although people often misjudge Leo, he would never misbehave or mistreat another child.*
+3. *The dishonest guide tried to mislead the travellers, but, by a stroke of misfortune, he became lost too.*
+
+All eight vault words appear across the three (misused = misuse). Traps: *misheard* (root *hear*, past tense *heard*), *misused* (mis + use + d), *mislead* vs *misled*. Copy the commas.
+
+**Stretch it!** *(optional)* — **Morphology Detective**: one vault word → prefix + root, root meaning, 2–3 word-family words, an original sentence. School's WAGOLL uses *misheard* (hears, hearing, heard), so pick another — *mistreat* → treats, treated, treatment, mistreatment.
+
+### Task 2 — Maths (20 min): subtraction, "choose your challenge"
+
+**One** of three lists, in the book **on the squared paper**, column subtraction where needed, best presentation. The sheet shows both horizontal (87 − 35) and column-with-exchange (234 − 158) methods.
+
+| | Range | What it drills |
+|---|---|---|
+| **Task 1** | 2-digit − 2-digit, no exchange | 87−35 · 79−26 · 68−14 · 95−42 · 76−53 · 88−36 · 67−25 · 99−47 · 84−31 · 58−16 |
+| **Task 2** | 2-digit with exchange, then 3-digit − 2-digit | 72−38 · 81−46 · 64−27 · 90−54 · 83−59 · 583−31 · 352−16 · 481−79 · 679−25 · 738−69 |
+| **Task 3** | 3-digit − 3-digit with exchange, incl. across zeros | 652−327 · 814−268 · 703−458 · 925−479 · 671−139 · 1,000−486 · 827−591 · 755−389 · 902−667 · 953−698 |
+
+⚠️ **Open:** which task the maths teacher set. Task 3 is the real Year 4 content — **703−458, 902−667 and 1,000−486 exchange across a zero**, the one new thing this week. Task 2 is built to catch the classic error of taking the small digit from the big one regardless of position (72−38 → 46).
+
+**Optional maths** (separate page): missing digits (Q1–3 one digit, Q4–6 two digits) · "make your own" pairs with differences 247, 365, 508, at least one exchanging in **both** tens and hundreds · a **digit-swap investigation** (Q10–11). ⚠️ Q10's instruction says *"reverse the digits in both numbers"* but the worked example swaps only the first number (548 → 845); follow the example.
+
+### Task 3 — Pre-learning (20 min): build a setting vocabulary bank (English)
+
+Choose **one of four settings** (pictures on the sheet): a marshy forest with mist over murky water · a green forest with towering trees and dappled sunlight · an underwater city and palace of immense corals · a land of fiery mountains with a looming volcano. *"Imagine that you have stepped inside it. What might you see, hear, smell, feel or touch?"* Fill five columns: **Nouns** (people, places, things) · **Powerful adjectives** · **Powerful verbs** (actions/movements happening) · **Similes** (like/as — *"The mist curled like ghostly fingers"*) · **Challenge: expanded noun phrases** (*the thick, ghostly mist · towering trees with tangled branches · rivers of glowing, orange lava*).
+
+**WAGOLL** (school's example, a child stepping through a glowing portal into a forest): precise nouns *portal, pathway, canopy, branches, mushrooms* · adjectives *enchanted, towering, tangled, shadowy, sparkling* · verbs *twisted, shimmered, hovered, swayed, crept* · adverbs *silently, cautiously, mysteriously* · similes *"The portal glowed like a ring of fire" / "The branches reached out like crooked fingers."*
+
+*Inference, not stated on the sheet:* the portal image matches **The Land of Roar**, the Term 1 class novel (section 2), so this bank most likely feeds a setting description of the world beyond the portal.
+
+### Reading
+
+Daily reading as normal — 20 min aloud, logged and signed. Week B: **library folder in on Tuesday**.
+
+### Answer key — for checking only
+
+**Maths Task 1:** 52 · 53 · 54 · 53 · 23 · 52 · 42 · 52 · 53 · 42
+**Maths Task 2:** 34 · 35 · 37 · 36 · 24 · 552 · 336 · 402 · 654 · 669
+**Maths Task 3:** 325 · 546 · 245 · 446 · 532 · 514 · 236 · 366 · 235 · 255
+
+**Optional — missing digits:** 1. **3** (637−286) · 2. **6** (894−366) · 3. **8** (831−158) · 4. **6** and **7** (634−278=356) · 5. **8** and **7** (750−483=267) · 6. **7** and **8** (730−138=592)
+
+**Optional — make your own** (one valid pair each, all exchanging in tens and hundreds; many others work): 7. 512−265=247 · 8. 823−458=365 · 9. 902−394=508
+
+**Optional — digit swap:** 10. 548−283=265; 845−283=**562**, up **297**. 11. **It depends.** Swapping the hundreds digit *h* and units digit *u* changes the number by **(u − h) × 99**, so the difference goes up when the units digit is bigger, down when smaller, unchanged when equal — always a multiple of 99.
+
+---
+
+## Week 3 — Week A, **Book A** · set Mon 31 Aug 2026 · due Mon 7 Sept 2026
+
+Sheet: `home-learning/T1-W3.pdf` (8 pages). Onto Celina's week: **Tue = pre-learning · Thu = maths · Fri = spelling**, reading every day.
+
+### Task 1 — Spelling (20 min): prefixes
+
+**Rule:** a prefix goes at the start of a word and changes its meaning. **mis-** = "wrongly" or "badly" (*misbehave, misplace*); **un-, in-, dis-** = "not" (*unhappy, disagree, incorrect*).
+
+This is **RWI Spelling Unit 1, prefix *mis***, with un-/in-/dis- revised alongside it — the same unit listed under English in section 2.
+
+**Vocab vault (13):** mistake · misuse · misbehave · unhappy · unlock · unsafe · incorrect · incapable · independent · disagree · dislike · dishonest · disappoint
+
+| Section | Activity |
+|---|---|
+| **Stick it!** | **Pattern Puzzle** — write out every vault word and number its syllables (*mistake = 2*) |
+| **Store it!** | **Speed Sort** — pick 6 vault words, write them in alphabetical order |
+| **Stretch it!** *(optional)* | **Word Family Expansion** — take a vault word, strip to the root (*misbehave → behave*), write as many words from that root as possible (*behave, behaviour, behaved…*). Repeat for 5 more |
+
+The instruction is to choose **one task from each section**; a child confident with the spellings can go straight to the stretch task.
+
+### Task 2 — Maths (20 min): addition
+
+**One** of three lists, in the home learning book **on the squared paper**, column addition, **all working shown**.
+
+| | Range | What it drills |
+|---|---|---|
+| **Task 1** | 2-digit + 2-digit, no regrouping | 32+56 · 12+67 · 45+12 · 16+10 · 22+56 · 55+31 · 35+13 · 20+79 · 67+21 · 13+66 |
+| **Task 2** | mixed, 2- and 3-digit, light regrouping | 32+56 · 12+67 · 49+12 · 16+15 · 29+56 · 583+31 · 352+16 · 281+79 · 679+25 · 138+69 |
+| **Task 3** | 3-digit + 3-digit, regrouping throughout | 256+323 · 671+148 · 234+548 · 425+479 · 371+139 · 627+891 · 255+622 · 397+455 · 289+667 · 753+918 |
+
+⚠️ **Open:** the booklet says the **maths teacher tells the child which one** to do. Celina needs to say which — Task 1 is well below where she should be, Task 3 is the one that actually teaches carrying.
+
+**Optional maths** (a separate page, four parts): missing digits (Q1–3 one digit, Q4–6 two digits solved through the carries) · "make your own" pairs hitting 623, 940 and 1500 with regrouping in **both** the tens and hundreds columns · a **digit-swap investigation** — swap the hundreds and units digits of the first number and ask whether the total always goes up.
+
+### Task 3 — Pre-learning (20 min): compare and contrast two biomes
+
+Read the two short texts and study the two images, then fill a **compare-and-contrast frame** in the book: *unique to tropical grasslands* | *what is the same* | *unique to tropical rainforests*, with the closing prompt **"how might flora and fauna have adapted to the biome?"** Two seed answers are given: **dry seasons** (grassland) and **wet all year** (rainforest).
+
+- **Tropical grasslands / savanna** — hot, wet and dry seasons; tall grasses, acacia and baobab spaced far apart; zebra, giraffe, elephant, antelope, lion; giraffe necks reach high leaves, lion fur hides in grass; animals migrate in the dry season.
+- **Tropical rainforest** — warm and wet all year; plants in layers from forest floor to canopy to emergents; vines, ferns, flowers; monkeys, parrots, frogs, butterflies, insects at different heights; climbing and camouflage; fungi break down litter on the floor.
+
+This feeds **Humanities — "Comparison of biomes"** and, a step later, "layers of the rainforest" (section 2).
+
+### Reading
+
+Daily reading as normal — 20 min aloud, logged and signed in the diary.
+
+### Answer key — for checking only
+
+**Maths Task 1:** 88 · 79 · 57 · 26 · 78 · 86 · 48 · 99 · 88 · 79
+**Maths Task 2:** 88 · 79 · 61 · 31 · 85 · 614 · 368 · 360 · 704 · 207
+**Maths Task 3:** 579 · 819 · 782 · 904 · 510 · 1518 · 877 · 852 · 956 · 1671
+
+**Optional — missing digits:** 1. **4** (347+286) · 2. **6** (528+366) · 3. **8** (673+158) · 4. **3** and **7** (356+278) · 5. **8** and **7** (483+267) · 6. **5** and **8** (592+138)
+
+**Optional — make your own** (one valid pair each; many others work): 7. 287+336=623 · 8. 465+475=940 · 9. 758+742=1500
+
+**Optional — digit swap:** 10. 234→432, so 782 → **980**, up **198**. 11. 627→726, so 1518 → **1617**, up **99**. 12. 289→982, so 956 → **1649**, up **693**.
+13. **No — not always.** Swapping the hundreds digit *h* and the units digit *u* changes the number, and so the total, by **(u − h) × 99**. It goes **up** when the units digit is bigger, **down** when it is smaller, and **stays the same** when they are equal. The change is always a multiple of 99 — that is the point worth landing.
+
+---
+
+# 2. Term 1 curriculum — topic "Pristine Planet?"
+
+Children explore what makes the planet pristine and what actions help rainforests and oceans — a journey through biomes, grounded by the residential, then diving into coral reefs. Alongside it, *The Land of Roar*: mythical creatures and imaginative adventures beyond a portal hidden in an old attic.
+
+## English
+
+**Key text:** *The Land of Roar* — Jenny McLachlan.
+
+**Crafting & accuracy (writing):**
+- **Writing to entertain** — writing in role, poetry, and a portal narrative
+- **Writing to persuade** — travel writing and speeches
+- **Writing to inform** — how to look after a dragon
+
+**Understanding focus** (*Narnia*, *Call Me Lion*):
+- Draw inferences and predictions based on evidence in the text
+- Discuss how authors use certain words and phrases to create different effects
+- Use a range of strategies to recall, retrieve and summarise the main points of a text
+
+**Read Write Inc Spelling** — consolidating Year 3 spelling, then:
+Unit 1 prefix *mis* · Unit 2 the "zhuh" sound `-sure` · Unit 3 prefix *auto* · Unit 4 suffix *-ly*
+
+## Mathematics — Term 1 concepts
+
+Roman numerals · Place value · Addition and subtraction · Multiplication and division · Measurement (area, length, perimeter)
+
+> **By the end of Year 4, all students should be fluent in multiplication tables and related facts from 1 to 12.** Stated in both the curriculum overview and the PIE slides.
+
+## Humanities — Pristine Planet
+
+Mapping, atlases and digital maps · Grid references · Comparison of biomes · Layers of the rainforest · Flora and fauna of the rainforest · Deforestation · Coral reefs and their formation
+
+## Science
+
+- **Living things — habitats:** grouping living things, classification keys, adaptation, food chains, features of habitats
+- **Forces and energy — electricity:** introduction to electricity, creating simple circuits
+- **Scientific method:** group information by common factors; write up findings using plan → do → evaluate; give plausible reasons for predictions
+
+## Art & Design — "Dream Portraits"
+
+Focus on drawing techniques, media and process: use sketchbooks purposefully · describe shape/form using core formal elements · identify and draw the effect of light · accurate observational drawing · scale and proportion · draw for a sustained period · work at a variety of scales · use a graphics package or app with increased precision · create layered images from original ideas.
+**Artists:** Albrecht Dürer, The Surrealists.
+
+## Design & Technology — "Interactive Illustrations"
+
+Mechanisms — levers and linkages. Generate realistic ideas and own design criteria; annotated sketches and prototypes; understand lever and linkage mechanisms; distinguish fixed from loose pivots; technical vocabulary. Making: order the stages, select appropriate tools and finishing techniques. Evaluation: investigate books and products with lever/linkage mechanisms; evaluate against criteria and user needs.
+**Designer:** Robert Sabuda.
+
+## Technology
+
+- **One Technology lesson per week on desktops**, plus a 1-1 device in class where digital use adds to the lesson
+- **Design process:** begin using the 5 stages; define design requirements; CAD skills including complex compound shapes; rotation, measurement, alignment and grouping tools; construct 3D shapes to a brief; act on design feedback
+- **Robotics:** colour and pressure sensors to navigate routes and avoid obstacles; code-writing; designing routes; debugging and problem solving
+- Platforms: **Seesaw and Google Classroom**. Staff manage devices via **Apple Classroom**; robust monitoring and filtering
+- **Digital pencil case** — school provides iPad pens this year
+- **Parents provide headphones** — wired USB-C, labelled; can stay at school or travel daily
+
+## Chinese
+
+Vocabulary across greetings, pets, fruits and vegetables, body parts, fast food, my house, stationery, my room, where I live · tones, pinyin rules, stroke order, radicals · stories in the **Wawayaya** app · copy simple characters, reproduce Milestone 3 core characters, phrases and sentences · answer questions using learnt structures · Chinese moon festival traditions.
+
+## Music
+
+- **Pristine Planet:** performing — singing and playing in ABA form through movement and classroom instruments; listening — structure in music, semiquavers; composing — a piece in ABA form depicting two contrasting environments, focusing on dynamics, tempo, pitch, texture
+- **Wind/Brass Programme:** learning an orchestral wind or brass instrument with good technique
+
+## PE — Term 1 rotation
+
+- **Games:** net games (movement and preparation); striking and fielding (awareness of decisions)
+- **Athletic development:** middle-distance running and House Cross Country; gymnastics and parkour; cycling and fitness challenges
+- **Aquatics:** stroke development and water skills
+- **Character:** encouraging teammates and their effort not just results; accepting decisions even when disagreeing
+
+## Library
+
+Reading: choosing colour-banded readers · Stories: Deepavali, Christmas, Hanukkah · Research: exploring faith using books and Encyclopaedia Britannica · Events: **Non-Fiction November, Red Dot Book Awards, House Poetry Shield**
+
+## Drama / Dance — "Puppetry & Secret Agents"
+
+Recap of the 'Physical 5' · using bodies to create character and tell a story · stage discipline and being an interactive audience member · storytelling and voice work through puppetry, working towards class puppet shows · communicating character and story through dance.
+
+## Life Skills — core theme "Relationships"
+
+Tanglin core values **Respect, Responsibility, Purpose**. Job Squads.
+Friendship and positive relationships · respectful communication (listening, expressing opinions) · diversity and inclusion, linked to RRSA and Black History Month · types of relationships including family, romantic and online · families and belonging · teamwork and unity through group and House activities · conflict resolution — apologising and using an assertive voice, tied to **Anti-Bullying Week**.
+
+---
+
+# 3. Maths in depth — Year 4 key knowledge
+
+From the Junior Maths Microsite. Four broad areas: **Number** (place value, +/−, ×/÷, fractions), **Measure, Shape and Space**, **Data**, **Algebra** (formally from Year 6). Using and applying is embedded throughout.
+
+**Place value** — read and write 4-digit numbers in numerals and words · recognise place value of digits in 4-digit numbers · compare and order using `< > =` · compose and decompose using standard and non-standard partitioning · reason about location on a number line and round to nearest 10, 100 and 1,000.
+
+**Addition and subtraction** — add and subtract mentally with appropriate 4-digit numbers (e.g. 2,312 + 1,210 = 3,522) · formal written columnar methods up to 4 digits · 2-step problems with multiple exchanges, plus checking strategies.
+
+**Multiplication and division** — 10 hundreds = 1 thousand, and 1,000 is 10× the size of 100 (scaling) · recall and use facts up to **12 × 12** · recognise and use factor pairs · distributive property, e.g. 351 × 4 = (300×4) + (50×4) + (1×4) · multiply 3-digit by 1-digit using formal column method · divide 2- and 3-digit by 1-digit using formal short division · 2-step problems, deciding which operations to use and why.
+
+**Fractions** — order and compare numbers with the same number of decimal places up to two · compare and order unit fractions and fractions with the same denominator · use fraction walls to recognise families of equivalent fractions · calculate unit fractions of quantities.
+
+**Shape, space and measurement** — perimeter of rectilinear figures, begin area · identify regular polygons (equilateral triangles, squares) · identify acute and obtuse angles · draw polygons by coordinates in the first quadrant and translate within it.
+
+**Geometry** — compare and classify quadrilaterals and triangles by properties and size · order angles up to two right angles · lines of symmetry in different orientations · complete a symmetric figure · coordinates in the first quadrant · describe translations left/right and up/down · plot points and complete a polygon.
+
+**Data** — interpret simple line graphs · solve comparison, sum and difference problems across a range of graphs.
+
+## Times tables — the Year 4 headline
+
+**The UK National Curriculum requires all multiplication facts to 12 × 12 before the end of Year 4.** Inverse division facts are learnt alongside.
+
+**Top tips from the school:**
+- Say the tables **aloud**
+- Learn them **as facts, not multiples** — not "2, 4, 6, 8" but "1×2=2, 2×2=4, 3×2=6"
+- Learn the **inverse division fact at the same time** — 2×3=6, so 6÷3=2
+- Emphasise **commutativity** — learn one fact, get one free (2×3 = 3×2)
+- Focus on 2s, 4s, 10s and 5s through **doubling and halving**
+- If skip counting, use fingers to track; **count in the larger number** (for 8×3, count 8s not 3s)
+- **Little and often** — repetition is key
+
+**Handy moments:** walking to school · on a journey · going up/down stairs · before taking a biscuit from the jar · setting the table or collecting dishes · in the bath · just before bed.
+
+**Games:** Pelmanism/Pairs, Snap, Bingo, and "Times Tables Table Tennis" (batting the next multiple back and forth). Blank business cards with a snipped corner work well. Note the school's caution — *avoid a speed element in the early stages of learning*, children may need thinking time.
+
+**Calculator trick:** enter 4, then `+ 4`, then press `=` repeatedly — the display walks the four times table. **Clock trick:** the analogue clock face is the five times table, and teaches telling the time at once.
+
+## Calculation methods
+
+Teachers follow the **White Rose Maths** scheme, supplemented with other methods. On the microsite: `WRM calculation policy Year 4.pdf` and `Calculation guidance for parents.pdf`.
+
+## Tools and resources
+
+**TT Rockstars** — `ttrockstars.com`, **login details at the back of the diary**. All children have access; progress is monitored and celebrated with certificates. This is the only school-issued maths tool.
+
+Other sites the school lists (TTS is **not** affiliated with any of them): White Rose Maths free workbooks and parent videos · Math Salamander (select 'UK Maths') · Transum Maths · Top Marks · Sushi Monster · Maths Zone · Primary Homework Help · BBC Bitesize · NRich · Which One Doesn't Belong? · Parallel maths (enrichment) · advice for parents from Prof Jo Boaler.
+
+**Textbooks:** White Rose Maths Practice Journals · Maths — No Problem! · Target Your Maths · Rising Stars. For Singapore-curriculum problem-solving books, **Year 4 = Grade 3**.
+
+**Working groups begin in Week 3.** A sticker in the back of the diary gives the maths teacher's contact details plus a QR code to the microsite.
+
+## Where Year 4 sits — the progression either side
+
+Useful for judging whether something is a gap or simply not taught yet.
+
+| Strand | Year 3 (done) | **Year 4 (now)** | Year 5 (next) |
+|---|---|---|---|
+| **Place value** | Numbers to **1,000**; count in 10s, 20s, 25s, 50s; 3-digit partitioning | **4-digit** numbers; round to 10/100/1,000 | To **1,000,000**, plus 2 decimal places; round to 100,000 |
+| **+ / −** | Up to 3 digits, columnar; inverse to check | Up to **4 digits**, columnar; 2-step problems with multiple exchanges | More than 4 digits; multi-step problems |
+| **× / ÷** | Facts for **3, 4 and 8** tables; 2-digit × 1-digit | **All facts to 12 × 12**; factor pairs; distributive property; 3-digit × 1-digit; short division | ×/÷ by 10, 100, 1000 incl. decimals; 4-digit × 2-digit; remainders in context |
+| **Fractions** | Tenths; equivalent fractions with small denominators; fractions of a set | Up to **2 decimal places**; equivalent fraction families; unit fractions of quantities | Up to 3 decimal places; mixed ↔ improper; %/decimal equivalents |
+| **Shape & measure** | Length, mass, capacity; perimeter of simple 2-D shapes; money and change; **telling the time**; right angles | Perimeter of rectilinear figures, **begin area**; regular polygons; acute/obtuse; first-quadrant coordinates | Convert metric units; area of composite shapes; angles around a point; reflection and translation |
+| **Data** | Pictograms, tally charts, block diagrams | **Interpret simple line graphs** | Complex tables and timetables; plot own line graphs |
+
+Two things worth noting. **Times tables are the Year 4 watershed** — Year 3 only covers the 3s, 4s and 8s, and Year 4 has to close out everything to 12 × 12 by the end of the year. And **telling the time is a Year 3 skill**, not revisited in Year 4, so if it is shaky it will not be retaught.
+
+From Year 5 the four areas are relabelled **Number, Measurement, Geometry, Statistics** (Year 3/4 use Number, Measure-Shape-Space, Data, Algebra). Algebra is formally taught only from Year 6.
+
+## Competitions
+
+**Whole-cohort, all children take part:**
+- **First Mathematics Challenge** — Years 3 and 4, **Term 3**. Run worldwide by the UK's Mathematical Association. 20 multiple-choice questions; **every child gets a participation certificate**. Past papers and answers are on the Association's website. *(Years 5–6 do the Primary Mathematics Challenge in Term 1 instead — 25 questions.)*
+- **House Times Table Rockstars Competition — "Battle of the Houses."** Each house competes to be TTRS champions. 2025 winners Portsdown; 2024 winners Wessex.
+- **FOBISIA Times Table Rockstars Competition** — Tanglin Junior took part **2–4 March 2026**; presumably recurring in March.
+
+**Optional, linked with Tanglin:** FOBISIA code-breaking competition (Week 6, Term 1) · Mathematics Story Writing Competition (Term 2) · Young Maths Story Competition · Hackathon, tech/coding (Term 1).
+
+**STEM CCAs** related to maths, tech and logic: Tanglin Pi, Chess, coding, robotics, TinkerCad.
+
+**External competitions — the school's position matters here.** *"Tanglin Junior School does not enter pupils into local or international maths Olympiads"*, but it lists ones parents can register for privately: CREST Mathematics Olympiad · IMC · **SASMO** · SIMOC · SMC · **SMKC (Singapore Math Kangaroo)** · TIO. The school is not affiliated with any of them and **provides no preparation**. So an Olympiad route is entirely a parent-driven decision.
+
+## The written methods — what Celina is actually taught
+
+**All six Drive-hosted PDFs are now saved locally in `Claude/Tanglin/maths/`.** They were link-shared publicly, so no school login was needed.
+
+Teachers follow the **White Rose Maths** calculation policy, using a **concrete → pictorial → abstract** approach. Below is the Year 4 policy in summary. Matching the home method to these avoids teaching a competing one.
+
+### Addition — Year 4
+Add 1s, 10s, 100s and 1,000s to a 4-digit number (mental, using number bonds and related facts — prompt her to *notice which digit changes*) · add up to two 4-digit numbers by **formal column method with up to 3 exchanges** · add decimals **in the context of money** · add fractions and mixed numbers with the same denominator beyond one whole · calculate the duration of events.
+
+Sentence stems the school uses: *"There are … ones/tens/hundreds so I do/do not need to make an exchange"* · *"I can exchange 10 … for 1 …"*. Children are encouraged to **estimate first and use inverse operations to check**.
+
+⚠️ Money is deliberately done by **partitioning and number lines, not column methods** — £3.25 → £3 + 20p + 5p.
+
+### Subtraction — Year 4
+Subtract 1s, 10s, 100s and 1,000s from a 4-digit number · subtract up to two 4-digit numbers · subtract decimals in the context of money · subtract fractions and mixed numbers with the same denominator.
+
+### Multiplication — Year 4
+Recall facts to **12 × 12** · multiply by **1 and 0** · **multiply three numbers** (using commutativity to pick the efficient order: 4 × 2 × 3 = 8 × 3 = 24) · **factor pairs** for equivalent calculations (8 × 6 = 8 × 3 × 2 = 24 × 2) · multiply by 10 and 100 · related facts (3 × 7 = 21, so 3 × 70 = 210, 3 × 700 = 2,100) · mental partitioning (26 × 8 = 80 + 80 + 48 = 208) · **multiply a 2- or 3-digit number by a 1-digit number in formal written layout** · scaling and correspondence problems.
+
+⚠️ The policy flags one specific misconception to head off: **children over-generalise that multiplying by 10 or 100 means "adding zeros."** It says this *"will cause issues later when multiplying decimals."* Use the digits-move-place-value-columns language instead.
+
+Daily habit the policy asks for: **count in multiples, forwards and backwards**, and notice links between related tables.
+
+### Division — Year 4
+Division facts to **12 × 12** · divide a number by 1 and by itself · related facts (linking to known tables: … ÷ … so … tens ÷ …) · **divide a 2- or 3-digit number by a 1-digit number** · divide by 10 and 100, identifying digits as ones, tenths and hundredths.
+
+Children compare the **grouping** and **sharing** structures of division and link both to times-table facts. Dividing by zero is explicitly highlighted as not possible.
+
+## Using TT Rockstars properly — the parent guide
+
+Accessible by web, iPad app, or on a parent's phone. The guide is aimed at parents and is more useful than it first looks.
+
+**Look at `Stats` → two sections matter:**
+- **Fluency** — average time per table, plus a **heat map**
+- **Effort** — a calendar of time spent practising each day. *Time in the shop doesn't count* — worth knowing, since children can spend a while there
+
+**Game modes, and what each is for:**
+- **Jamming** — focus on **one** times table
+- **Garage** — focus on **red target tables**; has a personalised smart algorithm. This is the one to use for weak spots
+- **Studio** — builds fluency **speed**
+
+**The method the school suggests:** read the heat map, list the five-plus facts showing red or orange, and drill each as a **fact family of four** — e.g. 6 × 7 = 42, 7 × 6 = 42, 42 ÷ 6 = 7, 42 ÷ 7 = 6. That matches the "learn the inverse at the same time" advice and the commutativity point on the microsite.
+
+**Login is at the back of the diary.**
+
+**Practical tip buried in the parent workshop: children can hide the timer in Garage mode.** Click the rock name → **My Account** → scroll to general settings → **"hide Garage clock."** Same screen reaches **My Stats**. Worth knowing if the countdown is causing stress rather than motivation — it fits the school's own caution about avoiding a speed element while a fact is still being learnt.
+
+## The "Tackling Times Tables" parent workshop — what it adds
+
+36 slides. Four parts: curriculum expectations, why learn them, teaching techniques, support at home.
+
+### The standard, and why Year 4 is the pinch point
+
+> *"Pupils should be able to recite multiplication and division facts for tables up to 12 × 12 by the age of nine."* — Ofsted
+
+The UK introduced a **statutory Multiplication Tables Check for all Year 4s** from 2019/20. That is why the whole 12 × 12 set has to land this year specifically.
+
+**The order tables are taught in:** 0 → 1 → 10 → 2 → 5 → 3 → 4 → 8 → 6 → 9 → 7 → 11 (learnt in Y2) → 12. Inverse division facts come alongside each. So the 7s arrive late and are the usual sticking point.
+
+**Where it goes next:** the deck shows the same facts scaling into `0.2 × 8`, `540 ÷ ? = 60`, `0.7 × 0.7`, `30²` and `9,000 × 12,000`. The point is that table knowledge is the reusable unit, not an end in itself.
+
+### The argument for why it matters — cognitive load
+
+Not "because tests." The workshop's case is about **working memory**:
+
+> *"For a child with smaller than average working memory capacity, trying to process any kind of mid-level arithmetic or basic algebra becomes a hellish nightmare, as they are still left painfully trying to process basics that should have been embedded from a very young age. On the other hand, if you simply know that 'seven eights are 56' then recalling that fact from our infinitely-capacious long-term memory uses no WM at all; it liberates a person's WM to instead focus on the more demanding, higher-level ideas."*
+
+Children who can't recall tables *"struggle in all areas of mathematics, due to cognitive overload."* The downstream topics named: fractions, money, decimals, percentages, time, measure, area and perimeter, algebra, factors and multiples.
+
+But the framing is explicitly **not** rote: *"Children aren't just thinking 'I know this fact' but 'I know this fact therefore I can work out this…'"*
+
+### Techniques the school actually uses — worth mirroring at home
+
+- **Connections and pattern spotting.** Deep learning that sustains, and relieves pressure on fallible memory. Can she explain multiplication as repeated addition? **Fact triangles** are called out as powerful for the inverse relationship between factors and multiples.
+- **Arrays**, used widely. Focus on the *process* rather than the answer as a discussion stimulus. Also how the commutative law is taught — **a child who doesn't know their 7s can flip 5 × 7 and use their 5s**. Commutativity roughly halves the number of facts to learn.
+- **Pattern sniffing.** e.g. *what's the same and what's different between the 4 and 8 times tables?* And divisibility: **multiples of 6 must be divisible by both 2 and 3** — 48 ends in 8 so it's even, and 4 + 8 = 12 which is divisible by 3.
+- **Counting stick.** Saying multiples in sequence **with rhythm** embeds them, while moving along the stick shows the repeated addition and reinforces the structure. Gives her a fallback tool when a fact won't come immediately.
+- **Songs** for auditory learners; **varied representations** for visual learners; **regular practice**.
+
+### Games the workshop suggests
+
+Playing cards · Connect Four · Bingo · **"catching" arrays around you** in daily life · step counting.
+
+**Homemade egg-carton game:** write 1–12 in the holes of an egg carton, drop in two small objects, close and shake. Open, multiply the two numbers the objects landed on, and keep a **running total of the products** to decide the winner.
+
+### Final note from the deck
+
+> *"Like any skill, if times tables are not used regularly they can get forgotten. When your child has mastered a times table it is important to keep practising. Don't let them get rusty."*
+
+⚠️ **The deck's Firefly link is dead.** It points twice to `firefly.tts.edu.sg/curriculum-1/mathematics/times-tables-` for "a large number of resources and websites." **The host `firefly.tts.edu.sg` has no DNS record at all** (checked 31 Aug 2026) — `myportal` and `library.tts.edu.sg` both resolve from the same machine, so this is not a local or access problem. Firefly was the school's previous learning platform; the current ones are My School Portal, Seesaw and Google Classroom. **This dates the deck to the pre-Firefly-retirement era — treat its platform references as stale, though the teaching content above stands.** The live equivalent is the Times Tables page of the Junior Maths Microsite, already captured above.
+
+## Files now held locally — `Claude/Tanglin/maths/`
+
+| File | Notes |
+|---|---|
+| `Tanglin - Progression in Calculation (parent guidance).pdf` | **Tanglin's own** guidance, not White Rose. Written strategies across year groups, tied to curriculum objectives. Its framing: once a strategy is mastered you keep using it for life |
+| `White Rose - Calculation Policy Year 4.pdf` | 17pp — the one summarised above |
+| `White Rose - Calculation Policy Year 3.pdf` | 20pp — what she came from |
+| `White Rose - Calculation Policy Year 5.pdf` | 19pp — what's next |
+| `White Rose - Calculation Policy Year 6.pdf` | 21pp |
+| `Understanding Times Table Rockstars.pdf` | The parent guide summarised above |
+
+Still not retrieved: **"Maths in the Junior School 2025-6"** (a Google Slides deck plus MP4 recording) and the **Times Tables Parent Workshop** — both are Google Slides rather than Drive PDFs, so they need a signed-in browser.
+
+---
+
+# 4. Public speaking and the ESB exam
+
+New this year: a **progression of public-speaking skills across Years 3–6**, because confident communication is treated as an essential life skill.
+
+**Year 4 key skills — structure and audience awareness:**
+- Plan and deliver a structured spoken presentation on a chosen topic
+- Begin to use notes or visual aids effectively **without reading directly from them**
+- Select vocabulary appropriate to audience and purpose
+- Maintain eye contact, posture and audience awareness
+- Respond confidently and appropriately to audience questions
+
+**ESB (English Speaking Board)** assesses speaking and listening in four strands, similar to Year 3: a **3-minute talk** based on school learning · a **poem** (supported in drama lessons) · **reading aloud** · **listening and responding**.
+
+**In Year 4 the certificated assessment is optional, but every child does the preparation and performance process.** Children taking the official exam are assessed in **Term 1 Week 13, 23–27 November**, by an examiner from the UK.
+
+Sign-up information: online session **Wed 16 September, 4.15pm**, and in In Touch. **Parent Volunteers Workshop: Wed 28 October, 8.15am.**
+
+---
+
+# 5. Personalised learning
+
+*"Every child. Any pathway. Anytime it helps."* Pathways move with the child — in, out, between — as needs evolve through the year.
+
+| Person | Role |
+|---|---|
+| Miss Hawthorne | **Enrichment** — deeper challenge and exploration |
+| Mrs Lucie Scott | **Precision Teaching** — fast-tracked skill building |
+| Mrs Michelle Durant | **Head of Learning Support** — tailored strategies to flourish |
+| Mrs Anjni Keshra | **Year 4 Link Teacher**, Learning Support |
+
+**Fidgets:** fidget tools help some students focus and regulate, but not all. Use must be **agreed with the class teacher and learning support teacher**, and the fidget is **supplied by learning support, not brought from home**. Framing: *toy vs. tool.*
+
+---
+
+# 6. Who's who
+
+## Junior School leadership
+
+| Name | Role |
+|---|---|
+| Clair Harrington Wilcox | Head of Junior School |
+| Rachel Turpin | Deputy Head Academic |
+| Peter O'Brien | Deputy Head Pastoral |
+| Benjamin Walker | Assistant Head Co-Curriculum |
+
+## Year 4 team — Emma Cottrell is Head of Year 4
+
+| Base | Teacher | Email |
+|---|---|---|
+| 4.1 | Miss Emma Cottrell *(Head of Year)* | emma.cottrell@tts.edu.sg |
+| 4.2 | Mr Elliot Burnley | elliot.burnley@tts.edu.sg |
+| 4.3 | Miss Lucy Wilson | lucy.wilson@tts.edu.sg |
+| 4.4 | Miss Gill Massam | gill.massam@tts.edu.sg |
+| 4.5 | Mrs Katie Valerio-Morris | katie.valeriomorris@tts.edu.sg |
+| 4.6 | Mrs Rachel O'Brien | rachel.obrien@tts.edu.sg |
+| 4.7 | Mr Joseph Gale | joseph.gale@tts.edu.sg |
+| **4.8 — Celina** | **Mr Daniel Barron** | **daniel.barron@tts.edu.sg** |
+
+**TLAs:** Ristah Munaris, Hannah Dalgleish, Porray Sim, Harshini Kalaihselvan (Learning Support STLA).
+**Release teacher:** Mrs Amber Walker — covers 4.1 Wednesdays, 4.6 Thursdays.
+
+**Contacting the teacher:** email or phone; **allow 24 hours**. Junior School teachers do not access email while children are in class. Urgent matters go through the **Junior Office, 6778 9000**. The school asks parents to consider content and tone, as teachers may read email before the day starts.
+
+---
+
+# 7. The school day and logistics
+
+**Lunch** — seated at the Nixon at **11.35am**, unhurried. Classes eat together whether school or packed lunch. Play **12.00–12.30pm**.
+
+**Going home** — complete the going-home arrangement online via the Portal (`gohome.tts.edu.sg`), for every child individually and **every method of transport**. Regular arrangements can be set weekly or ongoing; **ad-hoc changes must be in before 11.30am on the day**. After 11.30 it must go through the Junior School office — bus registers print at midday.
+
+**After school** — 3pm bus · 4pm bus (after an activity) · library supervision (update via the portal) · Junior car line · walk/public transport (permission form and pass; Years 5–6 only unless with a senior sibling). **Junior children may not be anywhere unsupervised on campus after 3pm, even with an older sibling** — including playing football on the astro. Make sure the child knows the time and location and it's written in the diary. CCA snacks orderable via the Portal, collected **14.45**.
+
+**What to bring** — Tanglin Junior hat · labelled water bottle · official Tanglin backpack · **reading folder** to protect books · school diary · art apron kept at school, named · packed lunch if not using Sodexo.
+**Not allowed:** mobile phones (contact via Junior Office), **smart watches of any kind**, nuts, bottled drinks and cans.
+
+**Uniform** — black shoes; pay attention to hair ties. **Socks must be plain white, ankle-length and clearly visible** — no logos, patterns, coloured details or bows; low-cut sports/trainer socks and long socks are not permitted.
+
+**PE kit** — morning PE and House events → **House T-shirt**. Afternoon PE → **red Junior PE T-shirt**. On PE days, come in kit and **stay in it all day**. On non-PE days with a sport CCA, come in uniform and change into the red PE top at the end of the day.
+**Year 4 has +PE in the first half of the year — PE kit three times a week this term.**
+
+**Diary** — for the child's learning, reflection and organisation. **Not a home-school communication tool.** Record the 20 minutes of daily reading in it. Mindful activities are done at school as morning tasks and make good conversation starters at home.
+
+---
+
+# 8. Term 1 dates that matter for Year 4
+
+| Date | Event |
+|---|---|
+| Mon 31 Aug | **CCAs begin**; home learning starts (Week 3) |
+| Thu 3 Sep | ParentWise: Seesaw & Google Classroom, 8.15–9.00am, Centenary Seminar Room L11 |
+| Thu 3 – Wed 9 Sep | Individual photography |
+| Wed 9 Sep | ParentWise: Welcome to the Junior Library, 9.45–11.15am |
+| **Wed 16 Sep** | **Year 4 House Cross Country** — One North Park at Mediapolis (next to Cafe Melba). **Bases 2, 4, 6, 8 → 8.20–9.20am.** Bases 1, 3, 5, 7 → 9.50–10.40am. House kit, hat, water bottle; sunscreen and repellent applied at home |
+| Wed 16 Sep, 4.15pm | ESB sign-up information session (online) |
+| Mon 21 Sep | Parent Teacher Conference |
+| **22 Sep, 4.15–5.15pm** | **Year 4 Residential Parent Information Evening** — ⚠ see date conflict below |
+| Fri 25 Sep | ParentWise: Maths Calculation |
+| Mon 28 Sep | Parent Teacher Conference |
+| Thu 1 Oct | ParentWise: English in the Junior School |
+| 12–26 Oct | **Half term.** Mon 26 Oct CPD day, school closed; pupils return Tue 27 Oct |
+| Wed 28 Oct, 8.15am | Year 4 ESB Parent Volunteers Workshop |
+| Fri 30 Oct | ParentWise: Assessment in the Junior School |
+| **Wed 4 & Thu 5 Nov** | **Year 4 Learning Showcase** |
+| Mon 9 Nov | Holiday in lieu |
+| **23–27 Nov** | **Year 4 ESB examinations** (Term 1 Week 13) |
+| Fri 4 Dec | CCAs end |
+| Fri 11 Dec | End of Term 1 |
+
+## 8a. School holidays and closures — 2026–27
+
+From Tanglin's published [**Calendar of Term Dates 2026–2027**](https://www.tts.edu.sg/school-life/term-dates):
+
+| Dates | Holiday / closure |
+|---|---|
+| **1 Jul–14 Aug 2026** | Summer break before Term 1 |
+| **9 Aug 2026** | National Day public holiday; replacement day applies because it falls on Sunday |
+| **12–23 Oct 2026** | October half-term break |
+| **26 Oct 2026** | Professional Development day — school closed |
+| **8–9 Nov 2026** | Deepavali public holiday and Monday holiday in lieu |
+| **14 Dec 2026–3 Jan 2027** | Christmas break |
+| **5 Feb 2027** | Professional Development day — school closed |
+| **6–8 Feb 2027** | Chinese New Year public holidays, including Monday replacement day |
+| **9–12 Feb 2027** | February half-term break |
+| **29 Mar–9 Apr 2027** | Easter break |
+| **21 May 2027** | Half-term break |
+| **24 May 2027** | Professional Development day — school closed |
+| **1 Jul 2027 onward** | Summer break |
+
+Other public holidays during term: **25 Dec 2026** (Christmas Day), **1 Jan 2027** (New Year's Day), **10 Mar** (Hari Raya Puasa), **26 Mar** (Good Friday), **1 May** (Labour Day), **17 May** (Hari Raya Haji), and **20 May** (Vesak Day). Dates marked `#` on the school calendar remain subject to confirmation.
+
+## Year 4 Residential — Term 2, and the dates are now known
+
+**3 days / 2 nights with Wildlings.** Activities: Wildlings forest-school teamwork · visit to Pulau Ubin and a cycle around the island · guided beach clean · raft building.
+
+**Trip 1: 13–15 January 2027. Trip 2: 20–22 January 2027.** (Which trip Celina is on is not stated in any source read.)
+
+The school asks parents to **hold questions until the information evening**.
+
+---
+
+# 9. Reading and the library
+
+**Junior Library** — `library.tts.edu.sg/junior/`, `juniorlibrary@tts.edu.sg`. Term time 7.30am–4.30pm; term breaks 9am–3pm; closed weekends and public holidays.
+
+Sections: Tanglin Reading Express · Suggested Reading · Collections · Research a Topic · **Encyclopedia Britannica** · **Sora** (ebooks and audiobooks) · Reading Competitions — Red Dot Awards, Voices in Verse. Parents can log in to **Infiniti** to search the catalogue.
+
+**Colour-banded readers** are the spine of the reading scheme — the teacher selects the band to match ability and provide challenge. Swap banded books frequently.
+
+**4.8's library slot: Tuesdays in Week B (even school weeks), fortnightly, periods 9–10, Mrs Murphy, Junior Library.** Pack the library folder the night before. Recurring Sunday 18:00 reminders are already in the calendar.
+
+---
+
+# 10. Communication and links
+
+- **In Touch** — weekly newsletter, released **every Friday** except public and school holidays. Carries dates that appear nowhere else.
+- **Comms & Key Dates** tab on the portal — whole-school announcements, Junior School year-level reminders, publications.
+- **Reports** — mid-year and end-of-year written reports; Learning Showcases and curriculum workshops announced in In Touch.
+- **Parent Teacher Conferences** booked via School Cloud.
+- Portal on mobile: log in at `myportal.tts.edu.sg` in Chrome, then Share → **Add to Home Screen** (iOS) or ⋮ → Add to home screen (Android).
+- **Sync SOCS** with your e-calendar — log into SOCS, Calendar Sync under each child.
+- **Friends of Tanglin** — social events, volunteering, interest groups. Class reps act as the contact point between class teacher and parents.
+
+**Key links**
+`myportal.tts.edu.sg` · `gohome.tts.edu.sg` · `library.tts.edu.sg/junior/` · `sites.google.com/tts.edu.sg/jnrschoolmathematics` · `ttrockstars.com` · Junior School Parent Handbook on Issuu (`junior_school_handbook_2026-27`)
+
+---
+
+# 11. Flags and unresolved conflicts
+
+1. **Residential parent evening weekday.** The Year 4 slides and PIE deck both say *"Wednesday 22nd September"*, the 17 Aug Year 4 calendar says *"Tuesday 22nd September"*. **22 September 2026 is a Tuesday**, so the weekday label on the slides is wrong — but no source resolves it explicitly. The ESB slide's *"Wednesday 16th September"* is correct, which suggests sloppy weekday labelling rather than a date change.
+2. **Half-term dates.** In Touch said 12–23 Oct with a PD day on 24 Oct (a Saturday); the earlier Year 4 calendar wording said 12–26 Oct. Tanglin's published 2026–27 term calendar confirms the school holiday is **12–23 Oct**, followed by **CPD day Mon 26 Oct**.
+3. **ParentWise tagging.** All currently listed workshops are tagged Reception, Nursery or Year 3 — none Year 4, even though the portal offers a Year 4 filter facet. The Seesaw/Google Classroom session is filed under Year 3 but In Touch describes it as a Junior School session open to returning families.
+4. **ParentWise Upcoming lags the Year 4 slides.** Maths Calculation (25 Sep), English (1 Oct) and Assessment (30 Oct) appear in the slides but not yet in the portal's Upcoming list, so times and venues are still unpublished.
+5. **Deepavali planning meeting.** Portal says Wed 10 September; In Touch of 28 Aug says Wed 16 September, 8.00–9.00am. 10 September is a Thursday, so the portal entry looks stale.
+6. **Junior 2026-27 co-curriculum booklet is not on Issuu** — all other sections have theirs. Saturday-CCA analysis rests on the 2025-26 booklet as a proxy, where **Gymnastics is the only Saturday CCA**.
+
+</script>
+<script>
+(function(){
+  var md = document.getElementById('src').textContent;
+  marked.setOptions({gfm:true, breaks:false});
+  var el = document.getElementById('doc');
+  el.innerHTML = marked.parse(md);
+
+  // id the numbered section headings so the rail can link to them
+  el.querySelectorAll('h1').forEach(function(h){
+    var m = h.textContent.match(/^(\d+[a-z]?)\./);
+    if(m){ h.id = 's' + m[1]; }
+  });
+  // wrap tables so wide ones scroll inside their own container
+  el.querySelectorAll('table').forEach(function(t){
+    var d = document.createElement('div'); d.className='tw';
+    t.parentNode.insertBefore(d,t); d.appendChild(t);
+  });
+  // promote warning / pointer paragraphs to callouts
+  el.querySelectorAll('p').forEach(function(p){
+    var t = p.textContent.trimStart();
+    if(t.indexOf('\u26A0') === 0) p.className='flag';
+    else if(t.indexOf('\u2B50') === 0) p.className='star';
+  });
+
+  // rail highlighting
+  var links = Array.prototype.slice.call(document.querySelectorAll('nav.rail a'));
+  var heads = links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  function sync(){
+    var best = 0;
+    heads.forEach(function(h,i){ if(h && h.getBoundingClientRect().top < 140) best = i; });
+    links.forEach(function(a,i){ a.classList.toggle('on', i===best); });
+  }
+  sync();
+  var tick=false;
+  addEventListener('scroll', function(){
+    if(tick) return; tick=true;
+    requestAnimationFrame(function(){ sync(); tick=false; });
+  }, {passive:true});
+})();
+</script>
