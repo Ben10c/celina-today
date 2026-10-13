@@ -94,15 +94,48 @@ var SCHED={
 0:{ctx:"Weekend · pack Book A and the chosen ESB book for Monday",read:"late morning",
    items:[["Reading — banded book, aloud",20,"school"],["Spelling app",5,""],["Synthesis",20,""],["TT Rockstars — Garage",5,""]]}
 };
-function dayTotal(d){var n=5;SCHED[d].items.forEach(function(i){n+=i[1]});return n}
+
+// ---- Holiday / date overrides (maintained by Tanglin Trust) ----
+function hItems(d){
+  var out=[];
+  SCHED[d].items.forEach(function(i){
+    if(/^Synthesis/.test(i[0])) return;
+    if(i[2]==='school' && !/^Reading/.test(i[0])) return;
+    out.push(i);
+  });
+  out.push(["Synthesis or maths book",15,""]);
+  return out;
+}
+function dkey(dt){return dt.getFullYear()+'-'+String(dt.getMonth()+1).padStart(2,'0')+'-'+String(dt.getDate()).padStart(2,'0');}
+var CAMP="Half-term · Gym & Dance camp 09:00–13:30, Gymnastics Centre L2 TCB · water, snack, gym kit · pick-up 13:30";
+var OVERRIDE={
+ "2026-10-12":{ctx:CAMP,read:"after lunch, ~15:00"},"2026-10-13":{ctx:CAMP+" · Ikea delivery 09:00",read:"after lunch, ~15:00"},
+ "2026-10-14":{ctx:CAMP,read:"after lunch, ~15:00"},"2026-10-15":{ctx:CAMP+" · Mum's birthday",read:"after lunch, ~15:00"},
+ "2026-10-16":{ctx:CAMP,read:"after lunch, ~15:00"},
+ "2026-10-17":{ctx:"Half-term weekend",read:"late morning"},"2026-10-18":{ctx:"Half-term weekend",read:"late morning"},
+ "2026-10-19":{ctx:"Half-term · last day at home before Thailand",read:"late morning"},
+ "2026-10-20":{ctx:"Half-term · Thailand trip (travel day)",read:"whenever she's freshest"},
+ "2026-10-21":{ctx:"Half-term · Thailand",read:"whenever she's freshest"},"2026-10-22":{ctx:"Half-term · Thailand",read:"whenever she's freshest"},
+ "2026-10-23":{ctx:"Half-term · Thailand",read:"whenever she's freshest"},"2026-10-24":{ctx:"Half-term · Thailand",read:"whenever she's freshest"},
+ "2026-10-25":{ctx:"Half-term · Thailand · order lunches for week of 27 Oct",read:"whenever she's freshest"},
+ "2026-10-26":{ctx:"Staff PD day · no school · flight home 12:50",read:"evening",extra:"Back to school tomorrow (Tue 27 Oct). Pack bag and library book tonight."},
+ "2026-10-30":{ctx:"House Day · house kit all day · Y4 Swimming Gala P4–5 (full swim kit) · snack + CCAs as usual",normal:true}
+};
+function dayPlan(dt){
+  var d=dt.getDay(), o=OVERRIDE[dkey(dt)], s=SCHED[d];
+  if(!o) return {ctx:s.ctx,read:s.read,items:s.items,hol:false};
+  if(o.normal) return {ctx:o.ctx,read:s.read,items:s.items,hol:false};
+  return {ctx:o.ctx,read:o.read||s.read,items:hItems(d),extra:o.extra,hol:true};
+}
+function dayTotal(p){var n=5;p.items.forEach(function(i){n+=i[1]});return n}
 
 (function(){
-  var today=new Date().getDay();
+  var now=new Date(),today=now.getDay();var mon=new Date(now);mon.setDate(now.getDate()-((today+6)%7));var anyHol=false;
   var order=[1,2,3,4,5,6,0];
   var grid=document.getElementById('grid');
   var week=0;
   order.forEach(function(d){
-    var s=SCHED[d], tot=dayTotal(d); week+=tot;
+    var dt=new Date(mon);dt.setDate(mon.getDate()+((d+6)%7));var s=dayPlan(dt);if(s.hol)anyHol=true;var tot=dayTotal(s); week+=tot;
     var el=document.createElement('section');
     el.className='day'+(d===today?' is-today':'');
     var items=s.items.map(function(i){
@@ -111,19 +144,18 @@ function dayTotal(d){var n=5;SCHED[d].items.forEach(function(i){n+=i[1]});return
     el.innerHTML =
       '<div class="dh"><span class="dn">'+DAYS[d]+'</span>'+
       (d===today?'<span class="now">Today</span>':'')+
-      '<span class="dt">'+tot+' min</span></div>'+
+      '<span class="dt">'+dt.getDate()+' '+dt.toLocaleDateString(undefined,{month:'short'})+' · '+tot+' min</span></div>'+
       '<p class="ctx">'+s.ctx+'</p>'+
       '<div class="blk"><div class="bl">Morning</div>'+
       '<div class="it"><span class="nm">Duolingo &mdash; German</span><span class="m">5&#8202;min</span></div></div>'+
-      '<div class="blk"><div class="bl">After school &middot; reading '+s.read+'</div>'+items+'</div>'+
+      '<div class="blk"><div class="bl">'+(s.hol?'Day':'After school')+' &middot; reading '+s.read+'</div>'+items+'</div>'+
       '<div class="blk"><div class="rest">Bedtime &mdash; her book, or you read to her</div></div>';
     grid.appendChild(el);
   });
+  if(anyHol){document.querySelector('.eyebrow').textContent='Tanglin Year 4 · Half-term';document.querySelector('.sub').textContent='Half-term: no set school work. Daily reading, apps, and Synthesis or the maths book every day. Back to school Tue 27 Oct.';}
   var h=Math.floor(week/60), m=week%60;
   document.getElementById('totals').innerHTML =
     '<span class="chip">Week <b>'+h+'h '+m+'m</b></span>'+
-    '<span class="chip">School sets <b>60 min</b></span>'+
-    '<span class="chip">Reading <b>140 min</b></span>'+
-    '<span class="chip">Added on top <b>'+(week-200)+' min</b></span>';
+    (anyHol?'':'<span class="chip">School sets <b>60 min</b></span>'+'<span class="chip">Reading <b>140 min</b></span>'+'<span class="chip">Added on top <b>'+(week-200)+' min</b></span>');
 })();
 </script>

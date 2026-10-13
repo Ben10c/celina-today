@@ -97,24 +97,47 @@ var SCHED={
 0:{ctx:"Weekend · Week 7 Book A · pack Book A and the chosen ESB book for Monday",read:"late morning",
    items:[["Reading — banded book, aloud",20,"school"],["Spelling app",5,""],["Synthesis",20,""],["TT Rockstars — Garage",5,""]]}
 };
-// Date-specific overrides (maintained by Tanglin Trust). Keys YYYY-MM-DD.
-var OVERRIDE={};
-var HALF={ctx:"Half-term \u00b7 no school until Tue 27 Oct",read:"late morning",
-  items:[["Reading \u2014 own/banded book, aloud",20,""],["Spelling app",5,""],["TT Rockstars \u2014 Garage",5,""]]};
-var CAMP={ctx:"Half-term \u00b7 Gym & Dance camp 09:00\u201313:30, Gymnastics Centre L2 TCB \u00b7 pack water, snack, gym kit \u00b7 pick-up 13:30",read:"after lunch, ~15:00",
-  items:HALF.items};
-["2026-10-12","2026-10-13","2026-10-14","2026-10-15","2026-10-16"].forEach(function(k){OVERRIDE[k]=CAMP});
-["2026-10-17","2026-10-18","2026-10-19","2026-10-20","2026-10-21","2026-10-22","2026-10-23","2026-10-24","2026-10-25"].forEach(function(k){OVERRIDE[k]=HALF});
-OVERRIDE["2026-10-26"]={ctx:"Staff PD day \u00b7 no school \u00b7 flight home 12:50",read:"evening",items:HALF.items,extra:"Back to school tomorrow (Tue 27 Oct). Pack bag and library book tonight."};
-OVERRIDE["2026-10-30"]={ctx:"House Day \u00b7 house kit all day \u00b7 Y4 Swimming Gala P4\u20135 (full swim kit) \u00b7 snack + CCAs as usual",read:"after snack, ~16:00",items:null};
+
+// ---- Holiday / date overrides (maintained by Tanglin Trust) ----
+function hItems(d){
+  var out=[];
+  SCHED[d].items.forEach(function(i){
+    if(/^Synthesis/.test(i[0])) return;
+    if(i[2]==='school' && !/^Reading/.test(i[0])) return;
+    out.push(i);
+  });
+  out.push(["Synthesis or maths book",15,""]);
+  return out;
+}
+function dkey(dt){return dt.getFullYear()+'-'+String(dt.getMonth()+1).padStart(2,'0')+'-'+String(dt.getDate()).padStart(2,'0');}
+var CAMP="Half-term · Gym & Dance camp 09:00–13:30, Gymnastics Centre L2 TCB · water, snack, gym kit · pick-up 13:30";
+var OVERRIDE={
+ "2026-10-12":{ctx:CAMP,read:"after lunch, ~15:00"},"2026-10-13":{ctx:CAMP+" · Ikea delivery 09:00",read:"after lunch, ~15:00"},
+ "2026-10-14":{ctx:CAMP,read:"after lunch, ~15:00"},"2026-10-15":{ctx:CAMP+" · Mum's birthday",read:"after lunch, ~15:00"},
+ "2026-10-16":{ctx:CAMP,read:"after lunch, ~15:00"},
+ "2026-10-17":{ctx:"Half-term weekend",read:"late morning"},"2026-10-18":{ctx:"Half-term weekend",read:"late morning"},
+ "2026-10-19":{ctx:"Half-term · last day at home before Thailand",read:"late morning"},
+ "2026-10-20":{ctx:"Half-term · Thailand trip (travel day)",read:"whenever she's freshest"},
+ "2026-10-21":{ctx:"Half-term · Thailand",read:"whenever she's freshest"},"2026-10-22":{ctx:"Half-term · Thailand",read:"whenever she's freshest"},
+ "2026-10-23":{ctx:"Half-term · Thailand",read:"whenever she's freshest"},"2026-10-24":{ctx:"Half-term · Thailand",read:"whenever she's freshest"},
+ "2026-10-25":{ctx:"Half-term · Thailand · order lunches for week of 27 Oct",read:"whenever she's freshest"},
+ "2026-10-26":{ctx:"Staff PD day · no school · flight home 12:50",read:"evening",extra:"Back to school tomorrow (Tue 27 Oct). Pack bag and library book tonight."},
+ "2026-10-30":{ctx:"House Day · house kit all day · Y4 Swimming Gala P4–5 (full swim kit) · snack + CCAs as usual",normal:true}
+};
+function dayPlan(dt){
+  var d=dt.getDay(), o=OVERRIDE[dkey(dt)], s=SCHED[d];
+  if(!o) return {ctx:s.ctx,read:s.read,items:s.items,hol:false};
+  if(o.normal) return {ctx:o.ctx,read:s.read,items:s.items,hol:false};
+  return {ctx:o.ctx,read:o.read||s.read,items:hItems(d),extra:o.extra,hol:true};
+}
 var WEEK="Term 1";
 function dayTotal(d){var n=5;SCHED[d].items.forEach(function(i){n+=i[1]});return n}
 
 (function(){
   var now=new Date(), d=now.getDay();
   var dateKey=now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0')+'-'+String(now.getDate()).padStart(2,'0');
-  var o=OVERRIDE[dateKey], s=SCHED[d];
-  if(o){ s={ctx:o.ctx,read:o.read||s.read,items:o.items||s.items,extra:o.extra}; }
+  var s=dayPlan(now), o=s.hol;
+  if(o) WEEK='Half-term';
   document.getElementById('wk').textContent=WEEK;
   var esbTask=dateKey>='2026-10-05'&&dateKey<='2026-10-11'
     ? ((d===1||d===3||d===5||d===0)?'ESB: poem practice':'ESB: book extract')
@@ -127,7 +150,7 @@ function dayTotal(d){var n=5;SCHED[d].items.forEach(function(i){n+=i[1]});return
   document.getElementById('day').textContent=DAYS[d];
   document.getElementById('date').textContent=now.toLocaleDateString(undefined,{day:'numeric',month:'long',year:'numeric'});
   document.getElementById('ctx').textContent=s.ctx;
-  document.getElementById('pmLabel').textContent='After school \u00b7 reading '+s.read;
+  document.getElementById('pmLabel').textContent=(o?'Day \u00b7 reading ':'After school \u00b7 reading ')+s.read;
   if(s.extra){document.getElementById('extra').textContent=s.extra;}
   else if(d===0&&!o){document.getElementById('extra').textContent='Pack Book A and the chosen ESB book, with the extract pages marked, for Monday.';}
 
