@@ -84,17 +84,17 @@ var DAYS=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"
 var SCHED={
 1:{ctx:"Gymnastics 15:00–17:00 · collected by car, home ~17:30",read:"after snack, ~17:45",
    items:[["Reading — banded book, aloud",20,"school"],["Spelling app",5,""],["TT Rockstars — Garage",5,""],["NumBots",5,""]]},
-2:{ctx:"Rock climbing 15:00–16:00 · 4pm bus, home ~16:45 · Week 7",read:"after snack, ~17:00",
-   items:[["Reading — banded book, aloud",20,"school"],["Pre-learning: diversity",20,"school"],["Spelling app",5,""],["TT Rockstars — Garage",5,""],["Synthesis",15,""]]},
+2:{ctx:"Rock climbing 15:00–16:00 · CCA bus F ~16:17, home ~16:45 · Week 9 Book A",read:"after snack, ~17:00",
+   items:[["Reading — banded book, aloud",20,"school"],["Pre-learning (TBC — awaiting Classroom sheet)",20,"school"],["Spelling app",5,""],["TT Rockstars — Garage",5,""],["Synthesis",15,""]]},
 3:{ctx:"Gymnastics 15:00–17:00 · collected by car, home ~17:30",read:"after snack, ~17:45",
    items:[["Reading — banded book, aloud",20,"school"],["Spelling app",5,""],["TT Rockstars — Garage",5,""],["NumBots",5,""]]},
-4:{ctx:"No CCA · 3pm bus, home ~15:45 · Week 7",read:"after snack, ~16:00",
-   items:[["Reading — banded book, aloud",20,"school"],["Maths: times-table recall",20,"school"],["Spelling app",5,""],["TT Rockstars — Garage",5,""],["Synthesis",15,""]]},
-5:{ctx:"No CCA · 3pm bus, home ~15:45 · Week 7",read:"after snack, ~16:00",
-   items:[["Reading — banded book, aloud",20,"school"],["ESB: choose book extract",20,"school"],["Spelling app",5,""],["TT Rockstars — Garage",5,""],["Synthesis",15,""]]},
+4:{ctx:"No CCA · bus 062 ~15:12 Great Eastern Mansions, home ~15:45 · Week 9",read:"after snack, ~16:00",
+   items:[["Reading — banded book, aloud",20,"school"],["Maths (TBC — awaiting Classroom sheet)",20,"school"],["Spelling app",5,""],["TT Rockstars — Garage",5,""],["Synthesis",15,""]]},
+5:{ctx:"No CCA · bus 062 ~15:12 · Week 9",read:"after snack, ~16:00",
+   items:[["Reading — banded book, aloud",20,"school"],["ESB (TBC — awaiting Classroom sheet)",20,"school"],["Spelling app",5,""],["TT Rockstars — Garage",5,""],["Synthesis",15,""]]},
 6:{ctx:"Weekend",read:"late morning",
    items:[["Reading — banded book, aloud",20,"school"],["Spelling app",5,""],["Synthesis",20,""],["TT Rockstars — Garage",5,""]]},
-0:{ctx:"Weekend · Week 7 Book A · pack Book A and the chosen ESB book for Monday",read:"late morning",
+0:{ctx:"Weekend · Week 9 Book A · pack Book A and library book for Monday",read:"late morning",
    items:[["Reading — banded book, aloud",20,"school"],["Spelling app",5,""],["Synthesis",20,""],["TT Rockstars — Garage",5,""]]}
 };
 
@@ -122,8 +122,12 @@ var OVERRIDE={
  "2026-10-23":{ctx:"Half-term · Thailand",read:"whenever she's freshest"},"2026-10-24":{ctx:"Half-term · Thailand",read:"whenever she's freshest"},
  "2026-10-25":{ctx:"Half-term · Thailand · order lunches for week of 27 Oct",read:"whenever she's freshest"},
  "2026-10-26":{ctx:"Staff PD day · no school · flight home 12:50",read:"evening",extra:"Back to school tomorrow (Tue 27 Oct). Pack bag and library book tonight."},
- "2026-10-30":{ctx:"House Day · house kit all day · Y4 Swimming Gala P4–5 (full swim kit) · snack + CCAs as usual",normal:true}
-};
+ "2026-10-27":{ctx:"First day back · Term 1 Week 9 · Week A, Book A · rock climbing 15:00–16:00 · CCA bus F ~16:17",read:"after snack, ~17:00",normal:true,extra:"Homework package TBC — Dad checking Classroom this afternoon. Hand in Week 8 book if due today."},
+ "2026-10-30":{ctx:"House Day · house kit all day · Y4 Swimming Gala P4–5 (full swim kit) · snack + CCAs as usual",normal:true},
+ "2026-11-02":{ctx:"Gymnastics Showcase 16:00–17:00 · parents wear activewear · update Going Home Arrangements if parent pickup",normal:true},
+ "2026-11-05":{ctx:"Y4 Learning Showcase base 4.8 · 08:20–09:10 in classroom · no hot drinks",normal:true},
+ "2026-11-06":{ctx:"Deepavali at bus bay 07:30–08:15 · yellow/orange/pink or traditional clothes OK",normal:true}
+};;
 function dayPlan(dt){var p=dayPlan0(dt);var n=Math.round(Date.UTC(dt.getFullYear(),dt.getMonth(),dt.getDate())/864e5);p.items=p.items.concat([[n%2?'ESB \u2014 Reading':'ESB \u2014 Poem',5,'']]);return p;}
 function dayPlan0(dt){
   var d=dt.getDay(), o=OVERRIDE[dkey(dt)], s=SCHED[d];
@@ -131,7 +135,7 @@ function dayPlan0(dt){
   if(o.normal) return {ctx:o.ctx,read:s.read,items:s.items,hol:false};
   return {ctx:o.ctx,read:o.read||s.read,items:hItems(d),extra:o.extra,hol:true};
 }
-var WEEK="Term 1";
+var WEEK="Term 1 Week 9 · Week A, Book A";
 function dayTotal(d){var n=5;SCHED[d].items.forEach(function(i){n+=i[1]});return n}
 
 (function(){
@@ -153,7 +157,7 @@ function dayTotal(d){var n=5;SCHED[d].items.forEach(function(i){n+=i[1]});return
   document.getElementById('ctx').textContent=s.ctx;
   document.getElementById('pmLabel').textContent=(o?'Day \u00b7 reading ':'After school \u00b7 reading ')+s.read;
   if(s.extra){document.getElementById('extra').textContent=s.extra;}
-  else if(d===0&&!o){document.getElementById('extra').textContent='Pack Book A and the chosen ESB book, with the extract pages marked, for Monday.';}
+  else if(d===0&&!o){document.getElementById('extra').textContent='Pack Book A and library book for Monday. ESB details follow the Classroom sheet.';}
 
   var rows=[];
   function add(where,name,mins,isSchool,id){
