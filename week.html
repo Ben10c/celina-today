@@ -124,7 +124,7 @@ var OVERRIDE={
  "2026-11-02":{ctx:"Gymnastics Showcase 16:00–17:00 · parents wear activewear · update Going Home Arrangements if parent pickup",normal:true},
  "2026-11-05":{ctx:"Y4 Learning Showcase base 4.8 · 08:20–09:10 in classroom · no hot drinks",normal:true},
  "2026-11-06":{ctx:"Deepavali at bus bay 07:30–08:15 · yellow/orange/pink or traditional clothes OK",normal:true}
-};;
+};
 function dayPlan(dt){var p=dayPlan0(dt);var n=Math.round(Date.UTC(dt.getFullYear(),dt.getMonth(),dt.getDate())/864e5);p.items=p.items.concat([[n%2?'ESB \u2014 Reading':'ESB \u2014 Poem',5,'']]);return p;}
 function dayPlan0(dt){
   var d=dt.getDay(), o=OVERRIDE[dkey(dt)], s=SCHED[d];
