@@ -64,9 +64,9 @@ h1{font-family:Newsreader,Georgia,serif;font-weight:600;font-size:clamp(30px,4.4
 </style>
 <div class="wrap">
 <header>
-  <p class="eyebrow">Tanglin Year 4 &middot; Term 1 Week 9 &middot; Week A, Book A</p>
+  <p class="eyebrow">Tanglin Year 4 &middot; Term 1 Week 10 &middot; Week B, Book B</p>
   <h1>Celina&rsquo;s Week</h1>
-  <p class="sub">Week 9 runs Tuesday 27 October to Sunday 1 November (Mon 26 was a PD day). Homework filled from the Classroom sheet: no spelling; maths times-table drills; ESB animal Curriculum Talk notes (split Tue/Fri). Written work goes in Book A; due Mon 2 Nov. Today is outlined.</p>
+  <p class="sub">Week 10 was set Mon 2 Nov. Tue: ESB slide (My animal) · Thu: timed times-table drills + Chinese · Fri: spelling Unit 4 (-ly), Deepavali non-uniform. Written work goes in Book B. The sheet says due Mon 9 Nov, but that is the Deepavali public holiday, so it is likely handed in Tue 10 Nov (check). Today is outlined.</p>
   <div class="totals" id="totals"></div>
 </header>
 <div class="grid" id="grid"></div>
@@ -81,17 +81,17 @@ var DAYS=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"
 var SCHED={
 1:{ctx:"Gymnastics 15:00–17:00 · collected by car, home ~17:30",read:"after snack, ~17:45",
    items:[["Reading — banded book, aloud",20,"school"],["Spelling app",5,""],["TT Rockstars — Garage",5,""],["NumBots",5,""]]},
-2:{ctx:"Rock climbing 15:00–16:00 · CCA bus F ~16:17, home ~16:45 · Week 9 Book A",read:"after snack, ~17:00",
-   items:[["Reading — banded book, aloud",20,"school"],["ESB animal notes — Curriculum Talk (choose animal; Intro + Appearance)",25,"school"],["Spelling app",5,""],["TT Rockstars — Garage",5,""],["Synthesis",15,""]]},
-3:{ctx:"Gymnastics 15:00–17:00 · collected by car, home ~17:30",read:"after snack, ~17:45",
+2:{ctx:"Rock climbing 15:00–16:00 · CCA bus F ~16:17, home ~16:45 · Week 10 Book B · library folder",read:"after snack, ~17:00",
+   items:[["Reading — banded book, aloud",20,"school"],["ESB slide — My animal (4 images on Classroom template)",20,"school"],["Spelling app",5,""],["TT Rockstars — Garage",5,""],["Synthesis",15,""]]},
+3:{ctx:"Gymnastics 15:00–17:00 · collected by car, home ~17:30 · Week 10",read:"after snack, ~17:45",
    items:[["Reading — banded book, aloud",20,"school"],["Spelling app",5,""],["TT Rockstars — Garage",5,""],["NumBots",5,""]]},
-4:{ctx:"No CCA · bus 062 ~15:12 Great Eastern Mansions, home ~15:45 · Week 9",read:"after snack, ~16:00",
-   items:[["Reading — banded book, aloud",20,"school"],["Maths — times-table drills",10,"school"],["Spelling app",5,""],["TT Rockstars — Garage",5,""],["Synthesis",15,""]]},
-5:{ctx:"No CCA · bus 062 ~15:12 · Week 9",read:"after snack, ~16:00",
-   items:[["Reading — banded book, aloud",20,"school"],["ESB animal notes — Habitat + Diet (finish template)",25,"school"],["Spelling app",5,""],["TT Rockstars — Garage",5,""],["Synthesis",15,""]]},
-6:{ctx:"Weekend",read:"late morning",
+4:{ctx:"No CCA · bus 062 ~15:12 Great Eastern Mansions, home ~15:45 · Week 10 Book B",read:"after snack, ~16:00",
+   items:[["Reading — banded book, aloud",20,"school"],["Maths — timed times-table drills (opt. Yohaku)",20,"school"],["Chinese — printed home learning",20,"school"],["Spelling app",5,""],["TT Rockstars — Garage",5,""],["Synthesis",15,""]]},
+5:{ctx:"No CCA · bus 062 ~15:12 · Week 10 Book B",read:"after snack, ~16:00",
+   items:[["Reading — banded book, aloud",20,"school"],["Spelling — Unit 4 -ly words, ABC order ×3 (Book B)",20,"school"],["Spelling app",5,""],["TT Rockstars — Garage",5,""],["Synthesis",15,""]]},
+6:{ctx:"Weekend · Week 10 · optional Suffix Sprint / Yohaku",read:"late morning",
    items:[["Reading — banded book, aloud",20,"school"],["Spelling app",5,""],["Synthesis",20,""],["TT Rockstars — Garage",5,""]]},
-0:{ctx:"Weekend · Week 9 Book A · pack Book A and library book for Monday",read:"late morning",
+0:{ctx:"Weekend · Week 10 Book B · Mon 9 Nov is a holiday · check hand-in date (likely Tue 10 Nov)",read:"late morning",
    items:[["Reading — banded book, aloud",20,"school"],["Spelling app",5,""],["Synthesis",20,""],["TT Rockstars — Garage",5,""]]}
 };
 
@@ -122,8 +122,11 @@ var OVERRIDE={
  "2026-10-27":{ctx:"First day back · Term 1 Week 9 · Week A, Book A · rock climbing 15:00–16:00 · CCA bus F ~16:17",read:"after snack, ~17:00",normal:true,extra:"Book A work started — ESB animal notes tonight. Due Mon 2 Nov."},
  "2026-10-30":{ctx:"House Day · house kit all day · Y4 Swimming Gala P4–5 (full swim kit) · snack + CCAs as usual",normal:true},
  "2026-11-02":{ctx:"Gymnastics Showcase 16:00–17:00 · parents wear activewear · update Going Home Arrangements if parent pickup",normal:true},
- "2026-11-05":{ctx:"Y4 Learning Showcase base 4.8 · 08:20–09:10 in classroom · no hot drinks",normal:true},
- "2026-11-06":{ctx:"Deepavali at bus bay 07:30–08:15 · yellow/orange/pink or traditional clothes OK",normal:true}
+ "2026-11-03":{ctx:"Term 1 Week 10 · Week B, Book B · rock climbing 15:00–16:00 · CCA bus F ~16:17 · library folder",read:"after snack, ~17:00",normal:true,extra:"Week 10 sheet is in (set Mon 2 Nov). Tonight: the ESB slide on Classroom. Hand-in: sheet says Mon 9 Nov, but that's a public holiday, so likely Tue 10 Nov. Check."},
+ "2026-11-04":{ctx:"Gymnastics 15:00–17:00 · collected by car, home ~17:30 · Week 10",normal:true},
+ "2026-11-05":{ctx:"Y4 Learning Showcase base 4.8 · 08:20–09:10 in classroom · no hot drinks · Week 10 Book B",normal:true,extra:"Tomorrow is Deepavali non-uniform: lay out bright colours or traditional dress + poppy coins tonight."},
+ "2026-11-06":{ctx:"Deepavali non-uniform day · bus bay 07:30–08:15 · yellow/orange/pink or traditional clothes OK · last day for poppies (coins)",normal:true,extra:"Long weekend: Mon 9 Nov is the Deepavali public holiday, no school."},
+ "2026-11-09":{ctx:"Deepavali public holiday · no school",read:"late morning",extra:"Week 10 Book B goes in on the next school day (likely Tue 10 Nov). Check."}
 };
 function dayPlan(dt){var p=dayPlan0(dt);var n=Math.round(Date.UTC(dt.getFullYear(),dt.getMonth(),dt.getDate())/864e5);p.items=p.items.concat([[n%2?'ESB \u2014 Reading':'ESB \u2014 Poem',5,'']]);return p;}
 function dayPlan0(dt){
@@ -138,9 +141,9 @@ function dayTotal(p){var n=5;p.items.forEach(function(i){n+=i[1]});return n}
   var now=new Date(),today=now.getDay();var mon=new Date(now);mon.setDate(now.getDate()-((today+6)%7));var anyHol=false;
   var order=[1,2,3,4,5,6,0];
   var grid=document.getElementById('grid');
-  var week=0;
+  var week=0, schoolMin=0;
   order.forEach(function(d){
-    var dt=new Date(mon);dt.setDate(mon.getDate()+((d+6)%7));var s=dayPlan(dt);var cut=new Date(2026,9,27);if(s.hol&&dt>=cut)anyHol=true;var tot=dayTotal(s); week+=tot;
+    var dt=new Date(mon);dt.setDate(mon.getDate()+((d+6)%7));var s=dayPlan(dt);var cut=new Date(2026,10,10);if(s.hol&&dt>=cut)anyHol=true;var tot=dayTotal(s); week+=tot; s.items.forEach(function(i){if(i[2]==='school'&&!/^Reading/.test(i[0]))schoolMin+=i[1];});
     var el=document.createElement('section');
     el.className='day'+(d===today?' is-today':'');
     var items=s.items.map(function(i){
@@ -161,6 +164,6 @@ function dayTotal(p){var n=5;p.items.forEach(function(i){n+=i[1]});return n}
   var h=Math.floor(week/60), m=week%60;
   document.getElementById('totals').innerHTML =
     '<span class="chip">Week <b>'+h+'h '+m+'m</b></span>'+
-    (anyHol?'':'<span class="chip">School sets <b>60 min</b></span>'+'<span class="chip">Reading <b>140 min</b></span>'+'<span class="chip">Added on top <b>'+(week-200)+' min</b></span>');
+    (anyHol?'':'<span class="chip">School sets <b>'+schoolMin+' min</b></span>'+'<span class="chip">Reading <b>140 min</b></span>'+'<span class="chip">Added on top <b>'+(week-140-schoolMin)+' min</b></span>');
 })();
 </script>
